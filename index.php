@@ -45,6 +45,7 @@
     include 'header.html';
     ?>
     <!-- end header section -->
+
     <!-- slider section -->
     <section class="slider_section ">
       <div class="dot_design">
@@ -165,115 +166,10 @@
     <!-- end slider section -->
   </div>
 
-  <!-- about section -->
-
-  <section class="about_section">
-    <div class="container  ">
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <div class="heading_container">
-              <h2>
-                À propos : <span>Cabinet de psychologie</span>
-              </h2>
-            </div>
-            <p>
-              Au Cabinet de Psychologie de Betty Marilles, vous trouverez un espace chaleureux et confidentiel pour explorer vos défis émotionnels et mentaux. Dirigé par [Nom de la Psychologue], notre cabinet offre un soutien empathique et expert pour vous aider à surmonter les difficultés et à retrouver l'équilibre dans votre vie. Contactez-nous dès aujourd'hui pour commencer votre parcours vers le bien-être mental et émotionnel.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end about section -->
-
-  <!-- client section -->
-  <section class="client_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          <span>Avis</span>
-        </h2>
-      </div>
-    </div>
-    <div class="container px-0">
-      <div id="customCarousel2" class="carousel  carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>
-                    Axel
-                  </h5>
-                  <h6>
-                    Thérapie de couple
-                  </h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                Grâce à la thérapie de couple avec Betty, ma partenaire et moi avons retrouvé une connexion plus profonde. Ses conseils et son soutien empathique ont vraiment fait la différence pour nous. Je recommande vivement ses services à tous ceux qui traversent des difficultés relationnelles.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>
-                    Enzo I.
-                  </h5>
-                  <h6>
-                    Deuil
-                  </h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                La perte de ma sœur a été dévastatrice, mais grâce à l'accompagnement attentionné de Betty, j'ai trouvé un espace pour exprimer ma douleur et ma peine. Sa compassion et son soutien m'ont aidé à traverser cette période difficile. Je suis reconnaissant pour son écoute et ses conseils bienveillants. Je recommande vivement ses services à ceux qui ont besoin de soutien dans le deuil.
-              </p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="client_info">
-                <div class="client_name">
-                  <h5>
-                    Aminata
-                  </h5>
-                  <h6>
-                    Consultation avec mon adolescent
-                  </h6>
-                </div>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-              <p>
-                Ma décision d'emmener mon fils, Dimitri, en consultation avec Betty s'est avérée être un tournant décisif dans notre relation. Grâce à ses compétences en thérapie familiale, Betty a su créer un espace sûr où nous avons pu explorer ouvertement nos différences et nos désaccords. Son approche compatissante et son expertise ont non seulement aidé Dimitri et moi à mieux nous comprendre mutuellement, mais nous ont également fourni des outils pratiques pour renforcer notre lien familial. Je suis reconnaissante pour le travail transformateur que nous avons accompli ensemble et je recommande vivement Betty à toutes les familles qui cherchent à surmonter des conflits et à rétablir une communication saine.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel_btn-box">
-          <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
-            <span class="sr-only">Précédent</span>
-          </a>
-          <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
-            <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <span class="sr-only">Suivant</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end client section -->
+  <?php
+  include 'about.html';
+  include 'contact.html';
+  ?>
 
   <!-- contact section -->
   <section class="contact_section layout_padding-bottom">
@@ -374,16 +270,16 @@
                 Liens utiles
               </h5>
               <div class="info_links_menu">
-                <a class="active" href="index.html">
+                <a class="active" href="index.php">
                   Menu
                 </a>
-                <a href="about.html">
+                <a href="about.php">
                   À propos
                 </a>
-                <a href="testimonial.html">
+                <a href="testimonial.php">
                   Avis
                 </a>
-                <a href="contact.html">
+                <a href="contact.php">
                   Contactez nous
                 </a>
               </div>
