@@ -47,8 +47,6 @@
     <!-- end header section -->
   </div>
 
-
-
     <?php
     //avis section
     include 'avis.html';

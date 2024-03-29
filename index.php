@@ -167,140 +167,15 @@
   </div>
 
   <?php
+  //about section
   include 'about.html';
+  //avis section
+  include 'avis.html';
+  //contact section
   include 'contact.html';
+  //end section
+  include 'end.html';
   ?>
-
-  <!-- contact section -->
-  <section class="contact_section layout_padding-bottom">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          Rester en contact
-        </h2>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          <div class="form_container">
-            <form action="">
-              <div>
-                <input type="text" placeholder="Full Name" />
-              </div>
-              <div>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="text" placeholder="Phone Number" />
-              </div>
-              <div>
-                <input type="text" class="message-box" placeholder="Message" />
-              </div>
-              <div class="btn_box">
-                <button>
-                  ENVOYER
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="img-box">
-            <img src="images/contact-img.jpg" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end contact section -->
-
-  <!-- info section -->
-  <section class="info_section ">
-    <div class="container">
-      <div class="info_top">
-        <div class="info_logo">
-          <a href="">
-            <img src="images/logo.png" alt="">
-          </a>
-        </div>
-      </div>
-      <div class="info_bottom layout_padding2">
-        <div class="row info_main_row">
-          <div class="col-md-6 col-lg-3">
-            <h5>
-              Adresse
-            </h5>
-            <div class="info_contact">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Localisation
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope"></i>
-                <span>
-                  psy@gmail.com
-                </span>
-              </a>
-            </div>
-            <div class="social_box">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="info_links">
-              <h5>
-                Liens utiles
-              </h5>
-              <div class="info_links_menu">
-                <a class="active" href="index.php">
-                  Menu
-                </a>
-                <a href="about.php">
-                  À propos
-                </a>
-                <a href="testimonial.php">
-                  Avis
-                </a>
-                <a href="contact.php">
-                  Contactez nous
-                </a>
-              </div>
-            </div>
-          </div>    
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end info_section -->
-
-
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>
