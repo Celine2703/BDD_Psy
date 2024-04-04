@@ -1,0 +1,45 @@
+CREATE TABLE `patient` (
+  `security_number` VARCHAR(20),
+  `firstname` VARCHAR(25),
+  `second_name` VARCHAR(25),
+  `lastname` VARCHAR(25),
+  `sex` VARCHAR(1),
+  `born_date` DATE,
+  `known_by` VARCHAR(50),
+  PRIMARY KEY (`security_number`)
+);
+
+CREATE TABLE `job` (
+  `name` VARCHAR(50),
+  PRIMARY KEY (`name`)
+);
+
+CREATE TABLE `slot` (
+  `start_date_slot` DATETIME,
+  PRIMARY KEY (`start_date_slot`)
+);
+
+CREATE TABLE `to_execute` (
+  `security_number` VARCHAR(20),
+  `name` VARCHAR(50),
+  `start_date` DATETIME,
+  PRIMARY KEY (`security_number`, `name`),
+  FOREIGN KEY (`security_number`) REFERENCES `patient`(`security_number`),
+  FOREIGN KEY (`name`) REFERENCES `job`(`name`)
+);
+
+CREATE TABLE `to_consult` (
+  `start_date_slot` DATETIME,
+  `start_date_consult` DATETIME,
+  `arrival_date_consult` DATETIME,
+  `price` DECIMAL(15,2),
+  `payment_method` VARCHAR(50),
+  `anxiety_index` INT,
+  `observations` VARCHAR(255),
+  `security_number` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`start_date_slot`),
+  UNIQUE (`security_number`),
+  FOREIGN KEY (`start_date_slot`) REFERENCES `slot`(`start_date_slot`),
+  FOREIGN KEY (`security_number`) REFERENCES `patient`(`security_number`)
+);
+

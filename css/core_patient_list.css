@@ -1,0 +1,29 @@
+.container-xl {
+    min-height: 700px;
+}
+
+.table-wrapper {
+    min-height: 600px;
+}
+
+#paginator {
+    background-color: white;
+}
+
+#paginator_actual {
+    margin-left: 5px;
+}
+
+button:before, button:after {
+    content: none;
+}
+
+#deleteEmployeeModal .modal-content, #addEmployeeModal .modal-content, #editEmployeeModal .modal-content {
+    width: 600px;
+    margin-left: -100px;
+    margin-top: 219px;
+
+}
+#addEmployeeModal .modal-content, #editEmployeeModal .modal-content {
+    margin-top: 0px;
+}

@@ -1,0 +1,15 @@
+#hearder_agenda {
+    margin-top: 100px;
+}
+
+#calendar {
+    margin-top: 0px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+button:before, button:after {
+    content: none;
+}
+
