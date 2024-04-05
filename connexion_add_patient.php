@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bdd_psy";
+$dbname = "mico";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -26,8 +26,6 @@ try {
         $stmt->bindParam(':born_date', $born_date);
         $stmt->execute();
 
-        header("Location: ".$_SERVER['PHP_SELF']);
-        exit;
     }
 }
 catch(PDOException $e) {
@@ -41,6 +39,6 @@ $conn = null;
 <script>
 // Réinitialiser le formulaire une fois soumis avec succès
 document.getElementById("form_add_patient").addEventListener("submit", function(event) {
-    this.reset();
+    location.reload();
 });
 </script>
