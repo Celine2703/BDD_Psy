@@ -3,7 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Patient</title>
 <?php 
-      include './includes.html' 
+      include './includes.html';
+	  include './connexion_show_list.php';
     ?>
 
 </head>
@@ -30,13 +31,9 @@
 
 				<thead>
 					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
+						<th>Selectionner</th>
 						<th>Securité social</th>
+						<th>Prénom</th>
 						<th>Nom</th>
 						<th>Email</th>
 						<th>Téléphone</th>
@@ -45,23 +42,9 @@
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-						<td id="security_number">12345678912354</td>
-						<td id="fullname">Thomas Hardy</td>
-						<td id="email">thomashardy@mail.com</td>
-						<td id="telephone">06 64 35 38 63</td>
-
-						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Edit"></i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
-						</td>
-					</tr>
+					<!-- pour chaque patient dans la liste des patients on affiche les informations du patient dans une ligne du tableau  -->
+					<?php include './patient_line_list.php'; ?>
+					<!-- end affiche -->
 				</tbody>
 
 			</table>
