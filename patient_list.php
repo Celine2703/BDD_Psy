@@ -49,19 +49,36 @@
 
 			</table>
 		</div>
+		<?php
+		// Nombre total de pages
+		$totalPages = 25;
+
+		// Page actuelle
+		$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+		$currentPage = max(1, min($totalPages, $currentPage)); // Assure que la page est dans les limites
+
+		// Nombre de pages à afficher avant de commencer à afficher les pages suivantes
+		$offset = 5;
+
+		?>
+
 		<div class="clearfix" id="paginator">
-				<div class="hint-text" id="paginator_actual"><b>5</b> sur <b>25</b> au total</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Précédent</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Suivant</a></li>
-				</ul>
-				</div>
-		</div>        
+			<div class="hint-text" id="paginator_actual"><b><?php echo $currentPage; ?></b> sur <b><?php echo $totalPages; ?></b> au total</div>
+			<ul class="pagination">
+				<li class="page-item disabled"><a href="#">Précédent</a></li>
+
+				<?php
+				// Boucle pour générer les pages de la pagination
+				for ($i = $currentPage; $i < $currentPage + $offset && $i <= $totalPages; $i++) {
+					// Si la page est la page active, ajoutez la classe active
+					$class = ($i == $currentPage) ? "page-item active" : "page-item";
+					echo "<li class='" . $class . "'><a href='#' class='page-link'>" . $i . "</a></li>";
+				}
+				?>
+
+				<li class="page-item"><a href="#" class="page-link">Suivant</a></li>
+			</ul>
+		</div>
 </div>
 
 
