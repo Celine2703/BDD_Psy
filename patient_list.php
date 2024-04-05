@@ -60,8 +60,8 @@
 					<li class="page-item"><a href="#" class="page-link">5</a></li>
 					<li class="page-item"><a href="#" class="page-link">Suivant</a></li>
 				</ul>
-			</div>
-	</div>        
+				</div>
+		</div>        
 </div>
 
 
