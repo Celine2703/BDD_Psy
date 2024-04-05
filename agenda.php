@@ -18,7 +18,7 @@
 
 
     <div id="hearder_agenda">
-      <h3>Choisir mes disponibilitées : </h3>
+      <h3>Choisir mes disponibilités : </h3>
     </div>
     <div id='calendar'></div>
 
