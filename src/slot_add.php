@@ -20,6 +20,9 @@
             <div class="col-md-6 mb-3">
                 <label for="date">Date</label>
                 <input type="date" class="form-control" id="date" name="date" required>
+                <?php if (isset($errors['date'])): ?>
+                    <div class="alert alert-danger"><?php echo $errors['date']; ?></div>
+                <?php endif; ?>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="start_time">Heure de début</label>
@@ -33,6 +36,9 @@
                     }
                     ?>
                 </select>
+                <?php if (isset($errors['start_datetime'])): ?>
+                    <div class="alert alert-danger"><?php echo $errors['start_datetime']; ?></div>
+                <?php endif; ?>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="end_time">Heure de fin</label>
@@ -46,6 +52,9 @@
                     }
                     ?>
                 </select>
+                <?php if (isset($errors['end_datetime'])): ?>
+                    <div class="alert alert-danger"><?php echo $errors['end_datetime']; ?></div>
+                <?php endif; ?>
             </div>
         </div>
         <button class="btn btn-success btn-block" type="submit">Valider</button>

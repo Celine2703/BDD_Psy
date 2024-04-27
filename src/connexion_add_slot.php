@@ -7,14 +7,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbname = $_ENV['DB_NAME'];
 
     try {
-        // Supposons que $errors est un tableau renvoyé par votre validateur
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
+        $errors = [];
+        include('./slot_validator.php');
 
-        $errors = include('./slot_validator.php'); // Assurez-vous que ce fichier existe et renvoie bien un tableau
-
-        if (count($errors) == 0) {
+        if (empty($errors)) {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -45,11 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Slots ajoutés avec succès.";
             header("Location: ./slot");
             exit();
-        } else {
-            // Gérez l'affichage des erreurs ici
-            foreach ($errors as $error) {
-                echo "<p>Error: $error</p>";
-            }
         }
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
