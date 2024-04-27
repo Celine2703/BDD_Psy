@@ -29,7 +29,7 @@ CREATE TABLE `to_execute` (
 );
 
 CREATE TABLE `to_consult` (
-  `start_date_slot` DATETIME,
+  `start_date_slot` DATETIME NOT NULL,
   `start_date_consult` DATETIME,
   `arrival_date_consult` DATETIME,
   `price` DECIMAL(15,2),
@@ -37,8 +37,7 @@ CREATE TABLE `to_consult` (
   `anxiety_index` INT,
   `observations` VARCHAR(255),
   `security_number` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`start_date_slot`),
-  UNIQUE (`security_number`),
+  PRIMARY KEY (`start_date_slot`, `security_number`),
   FOREIGN KEY (`start_date_slot`) REFERENCES `slot`(`start_date_slot`),
   FOREIGN KEY (`security_number`) REFERENCES `patient`(`security_number`)
 );

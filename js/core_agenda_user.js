@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'timeGridDay,timeGridWeek'
         },
-        events: './src/agenda_slot.php',
+        events: './src/agenda_slot_allow.php',
         eventClick: function(info) {
             window.location.href = './consult-create?eventStartDate=' + info.event.start.toISOString();
         }

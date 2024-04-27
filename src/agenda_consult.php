@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/core_agenda.css">
 </head>
 <body>
-<?php include 'header.html'; ?>
+<?php include 'header.php'; ?>
 
 <div class="container mt-5 mb-5">
     <h4 class="mb-3">Planifier une tâche</h4>

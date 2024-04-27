@@ -59,9 +59,7 @@ $is_log =  !empty($_SESSION['user_role']);
                                 <?php endif; ?>
                             </ul>
                         </div>
-                        <?php
-                        session_destroy();
-                        if (!$is_log):?>
+                        <?php if (!$is_log):?>
                             <div class="quote_btn-container" id="connexion_btn_header">
                                 <a href="">
                                     <i class="fa fa-user" aria-hidden="true"></i>
