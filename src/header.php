@@ -15,6 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+$is_user = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'user';
 $is_log =  !empty($_SESSION['user_role']);
 ?>
 
@@ -49,6 +50,11 @@ $is_log =  !empty($_SESSION['user_role']);
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="./agenda-consultation">Agenda - Consultation</a>
+                                    </li>
+                                <?php endif; ?>
+                                <?php if ($is_user): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./agenda-user">Prendre un Rdv</a>
                                     </li>
                                 <?php endif; ?>
                             </ul>
