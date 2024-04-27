@@ -23,11 +23,29 @@
             </div>
             <div class="col-md-3 mb-3">
                 <label for="start_time">Heure de début</label>
-                <input type="time" class="form-control" id="start_time" name="start_time" required>
+                <select class="form-control" id="start_time" name="start_time" required>
+                    <?php
+                    for ($hour = 9; $hour < 22; $hour++) {
+                        for ($minute = 0; $minute < 60; $minute += 15) {
+                            $formattedTime = str_pad($hour, 2, "0", STR_PAD_LEFT) . ':' . str_pad($minute, 2, "0", STR_PAD_LEFT);
+                            echo "<option value=\"$formattedTime\">$formattedTime</option>";
+                        }
+                    }
+                    ?>
+                </select>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="end_time">Heure de fin</label>
-                <input type="time" class="form-control" id="end_time" name="end_time" required>
+                <select class="form-control" id="end_time" name="end_time" required>
+                    <?php
+                    for ($hour = 9; $hour < 22; $hour++) {
+                        for ($minute = 0; $minute < 60; $minute += 15) {
+                            $formattedTime = str_pad($hour, 2, "0", STR_PAD_LEFT) . ':' . str_pad($minute, 2, "0", STR_PAD_LEFT);
+                            echo "<option value=\"$formattedTime\">$formattedTime</option>";
+                        }
+                    }
+                    ?>
+                </select>
             </div>
         </div>
         <button class="btn btn-success btn-block" type="submit">Valider</button>
