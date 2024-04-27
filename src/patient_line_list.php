@@ -11,7 +11,7 @@
             echo "<td>" . $patient['known_by'] . "</td>";
             echo "<td>";
             echo '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>';
-            echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
+            echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal" data-id="'. $patient['security_number'] . '"> <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
             echo "</td>";
             echo "</tr>";
         }

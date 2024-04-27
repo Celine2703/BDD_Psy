@@ -35,13 +35,14 @@ catch(PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
 
-// Fermer la connexion à la base de données
+
 $conn = null;
 ?>
 
 <script>
 // Réinitialiser le formulaire une fois soumis avec succès
-document.getElementById("form_add_patient").addEventListener("submit", function(event) {
-    location.reload();
+
+$("#form_add_patient").submit(function(event) {
+    // location.reload();
 });
 </script>

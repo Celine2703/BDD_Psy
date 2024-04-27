@@ -13,7 +13,7 @@
 <body class="list_patient">
 
 <?php include './header.html'; ?>
-<div class="container-xl">
+<div class="container" style="margin-bottom: -100px;">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -80,14 +80,15 @@
 			</ul>
 		</div>
 </div>
+</div>
 
 
 
-
+</body>
 <?php
 include './patient_add.php';
 include './patient_edit.php';
 include './patient_delete.php';
 
 include './end.html'; ?>
-</body></html>
+</html>
