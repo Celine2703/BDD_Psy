@@ -29,8 +29,7 @@
 
       include 'connexion.html';
       ?>
-      
-      
+
     </div>
 
     <?php
