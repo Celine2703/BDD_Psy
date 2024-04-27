@@ -1,6 +1,8 @@
 <?php
 // Démarrage de la session
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Effacement de toutes les variables de session
 $_SESSION = array();
