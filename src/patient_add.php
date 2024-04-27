@@ -6,7 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ajouter Patient</title>
-    <?php include './includes.html'; ?>
+    <?php include './check_admin.php';
+            include './includes.html'; ?>
     <?php include  './connexion_add_patient.php'; ?>
 </head>
 <body>

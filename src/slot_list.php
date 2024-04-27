@@ -13,6 +13,7 @@
     <meta name="author" content=""/>
     <title>Mes disponibilités</title>
     <?php
+    include './check_admin.php';
     include './includes.html';
     include './connexion_slot.php';
 

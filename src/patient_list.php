@@ -5,6 +5,7 @@
 <?php 
       include './includes.html';
 	  include './connexion_show_list.php';
+        include './check_admin.php';
     ?>
 
 </head>

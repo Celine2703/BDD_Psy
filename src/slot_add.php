@@ -8,6 +8,7 @@
     <title>Ajouter Disponibilité</title>
     <?php include './includes.html';
     include './connexion_add_slot.php';
+    include './check_admin.php';
     ?>
 </head>
 <body>
