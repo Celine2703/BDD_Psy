@@ -1,0 +1,5 @@
+CREATE TABLE users (
+    security_number VARCHAR(15) PRIMARY KEY,
+    password VARCHAR(255),
+    role ENUM('user', 'admin')
+);

@@ -11,7 +11,7 @@
     ?>
 </head>
 <body>
-<?php include './header.html'; ?>
+<?php include './header.php'; ?>
 
 <div class="container mt-5 mb-5">
     <h4 class="mb-3">Ajouter Disponibilité</h4>
@@ -28,8 +28,8 @@
                 <label for="start_time">Heure de début</label>
                 <select class="form-control" id="start_time" name="start_time" required>
                     <?php
-                    for ($hour = 9; $hour < 22; $hour++) {
-                        for ($minute = 0; $minute < 60; $minute += 15) {
+                    for ($hour = 8; $hour < 20; $hour++) {
+                        for ($minute = 0; $minute < 60; $minute += 30) {
                             $formattedTime = str_pad($hour, 2, "0", STR_PAD_LEFT) . ':' . str_pad($minute, 2, "0", STR_PAD_LEFT);
                             echo "<option value=\"$formattedTime\">$formattedTime</option>";
                         }
@@ -44,8 +44,8 @@
                 <label for="end_time">Heure de fin</label>
                 <select class="form-control" id="end_time" name="end_time" required>
                     <?php
-                    for ($hour = 9; $hour < 22; $hour++) {
-                        for ($minute = 0; $minute < 60; $minute += 15) {
+                    for ($hour = 8; $hour < 20; $hour++) {
+                        for ($minute = 0; $minute < 60; $minute += 30) {
                             $formattedTime = str_pad($hour, 2, "0", STR_PAD_LEFT) . ':' . str_pad($minute, 2, "0", STR_PAD_LEFT);
                             echo "<option value=\"$formattedTime\">$formattedTime</option>";
                         }

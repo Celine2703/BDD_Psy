@@ -10,7 +10,7 @@
     <?php include  './connexion_add_patient.php'; ?>
 </head>
 <body>
-<?php include './header.html'; ?>
+<?php include './header.php'; ?>
 
 <div class="container mt-5 mb-5">
     <h4 class="mb-3">Ajouter un patient</h4>

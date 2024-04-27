@@ -23,11 +23,11 @@
     <div class="hero_area">
       <!-- header section strats -->
       <?php
-      include 'header.html';
+      include 'header.php';
 
       include 'slider.html';
 
-      include 'connexion.html';
+      include 'connexion.php';
       ?>
 
     </div>

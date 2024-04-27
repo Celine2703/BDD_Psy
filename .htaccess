@@ -1,8 +1,10 @@
 RewriteEngine On
 
+RewriteRule ^$ src/index.php [NC,L]
 RewriteRule ^accueil$ src/index.php [NC,L]
 RewriteRule ^patient$ src/patient_list.php [NC,L]
 RewriteRule ^patient-create$ src/patient_add.php [NC,L]
 RewriteRule ^agenda$ src/agenda.php [NC,L]
+RewriteRule ^agenda-consultation$ src/agenda_consult.php [NC,L]
 RewriteRule ^slot$ src/slot_list.php [NC,L]
 RewriteRule ^slot-create$ src/slot_add.php [NC,L]

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'title',
         right: 'timeGridDay,timeGridWeek'
       },
-      events: 'https://fullcalendar.io/api/demo-feeds/events.json',
+      events: './src/agenda_slot.php',
 
     });
 

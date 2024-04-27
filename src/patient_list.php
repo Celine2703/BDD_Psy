@@ -12,7 +12,7 @@
 
 <body class="list_patient">
 
-<?php include './header.html'; ?>
+<?php include './header.php'; ?>
 <div class="container" style="">
 	<div class="table-responsive">
 		<div class="table-wrapper">
