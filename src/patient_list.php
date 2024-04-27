@@ -13,7 +13,7 @@
 <body class="list_patient">
 
 <?php include './header.html'; ?>
-<div class="container" style="margin-bottom: -100px;">
+<div class="container" style="">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -22,7 +22,7 @@
 						<h2>Gérer les <b>Patients</b></h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons"></i> <span>Ajouter</span></a>
+						<a href="./patient-create" class="btn btn-success"><i class="material-icons"></i> <span>Ajouter</span></a>
 					</div>
 				</div>
 			</div>
@@ -87,7 +87,6 @@
 
 </body>
 <?php
-include './patient_add.php';
 include './patient_edit.php';
 include './patient_delete.php';
 

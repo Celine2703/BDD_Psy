@@ -1,74 +1,79 @@
-<?php include("./connexion_add_patient.php"); ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajouter Patient</title>
+    <?php include './includes.html'; ?>
+    <?php include './connexion_add_patient.php'; ?>
+</head>
+<body>
+<?php include './header.html'; ?>
 
-<div id="addEmployeeModal" class="modal fade" style="display: none;" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<form method="post" id="form_add_patient">
-				<div class="modal-header">						
-					<h4 class="modal-title">Ajouter</h4>
-					<span type="button" class="close" data-dismiss="modal" aria-hidden="true">×</span>
-				</div>
-				<div class="modal-body">
+<div class="container mt-5 mb-5">
+    <h4 class="mb-3">Ajouter un patient</h4>
+    <form method="post" id="form_add_patient" class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="lastname">Nom</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="firstname">Prénom</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="second_name">Deuxième Prénom</label>
+                <input type="text" class="form-control" id="second_name" name="second_name" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="sexe">Sexe</label>
+                <select id="sexe" class="form-control" name="sexe" required>
+                    <option value="feminin">Féminin</option>
+                    <option value="masculin">Masculin</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="security_number">Numéro de Sécurité Social</label>
+                <input type="text" class="form-control" id="security_number" name="security_number" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <?php if (!empty($error_message)): ?>
+                    <div class="alert alert-danger mt-2">
+                        <?php echo $error_message; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="adresse">Adresse</label>
+                <textarea class="form-control" id="adresse" name="adresse" required></textarea>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="phone">Téléphone</label>
+                <input type="text" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="date_naissance">Date de naissance</label>
+                <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+                <button class="btn btn-success btn-block" type="submit">Valider</button>
+                <a href="./patient" class="btn btn-danger btn-block mt-2">Annuler</a>
+            </div>
+        </div>
 
-                <div class="form-group">
-                    <label>Nom</label>
-                    <input type="text" class="form-control" name="lastname" required>
-                </div>
 
-                <div class="form-group">
-                    <label>Prénom</label>
-                    <input type="text" class="form-control" name="firstname" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Deuxième Prénom</label>
-                    <input type="text" class="form-control" name="second_name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="sexe">Sexe</label>
-                    <select id="sexe" class="form-control" name="sexe" required>
-                        <option value="feminin">Féminin</option>
-                        <option value="masculin">Masculin</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Numéro de Sécurité Social</label>
-                    <input type="text" class="form-control" name="security_number" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" class="form-control" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Adresse</label>
-                    <textarea class="form-control" name="adresse" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Téléphone</label>
-                    <input type="text" class="form-control" name="telephone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="date_naissance">Date de naissance</label>
-                    <input type="date" id="date_naissance" class="form-control" name="date_naissance" required>
-                </div>
-
-                
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-					<input type="submit" class="btn btn-success" value="Valider">
-				</div>
-			</form>
-		</div>
-	</div>
+    </form>
 </div>
-<?php
-include("./toast_error_patient.php");
-include("./toast_valid_patient.php");
-?>
+
+<?php include './end.html'; ?>
+<?php include './include_js.html'; ?>
+</body>
+</html>
