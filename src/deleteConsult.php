@@ -21,7 +21,7 @@ try {
         throw new Exception("Les données nécessaires pour la suppression ne sont pas complètes.");
     }
 
-    $stmt = $conn->prepare("DELETE FROM to_consult WHERE start_date_slot = :start_date_slot AND security_number = :security_number");
+    $stmt = $conn->prepare("DELETE FROM to_consult WHERE start_date_slot = :start_date_slot");
     $stmt->bindParam(':start_date_slot', $start_date_slot);
     $stmt->bindParam(':security_number', $security_number);
     $stmt->execute();
