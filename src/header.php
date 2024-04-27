@@ -34,9 +34,6 @@ $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="d-flex mr-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php">Accueil</a>
-                                </li>
                                 <?php if ($is_admin): ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="./patient">Patients</a>
@@ -58,6 +55,13 @@ $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
                                 <a href="">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                         <span> Se connecter </span>
+                                </a>
+                            </div>
+                        <?php else: ?>
+                            <div class="quote_btn-container" id="deconnexion_btn_header">
+                                <a href="./src/deconnexion.php">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span> Se deconnecter </span>
                                 </a>
                             </div>
                         <?php endif; ?>
