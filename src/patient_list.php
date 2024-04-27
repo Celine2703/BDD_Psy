@@ -23,7 +23,6 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons"></i> <span>Ajouter</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons"></i> <span>Supprimer</span></a>						
 					</div>
 				</div>
 			</div>
@@ -31,10 +30,12 @@
 
 				<thead>
 					<tr>
-						<th>Selectionner</th>
 						<th>Securité social</th>
 						<th>Prénom</th>
+                        <th>Second Prénom</th>
 						<th>Nom</th>
+						<th>Sexe</th>
+						<th style="min-width: 130px;">Date de naissance</th>
 						<th>Email</th>
 						<th>Téléphone</th>
 						<th class="actions"></th>
