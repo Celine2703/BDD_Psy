@@ -5,6 +5,7 @@ $(document).ready(function() {
         let slotid = $(this).attr('data-id');
         $('#deleteEmployeeModal .modal-footer .btn.btn-danger').attr('data-id', slotid);
 
+        console.log(slotid);
     });
 
 
@@ -13,7 +14,7 @@ $(document).ready(function() {
 
         let patientid = $(this).attr('data-id');
 
-        $.post('./src/deleteConsult.php', { slotId: patientid }, function(data) {
+        $.post('./src/deleteConsult.php', { start_date_slot: patientid }, function(data) {
             location.reload();
         });
     });
