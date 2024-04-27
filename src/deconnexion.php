@@ -1,8 +1,7 @@
 <?php
 // Démarrage de la session
 if (session_status() === PHP_SESSION_NONE) {
-    header("Location: ../accueil");
-    exit();
+    session_start();
 }
 
 

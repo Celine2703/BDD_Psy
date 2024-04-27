@@ -16,25 +16,6 @@
 <body>
 <?php include 'header.php'; ?>
 
-<div class="container mt-5 mb-5">
-    <h4 class="mb-3">Planifier une tâche</h4>
-    <form method="post" id="add_task_form" class="needs-validation" novalidate>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="start_date_slot">Date et Heure de début</label>
-                <input type="datetime-local" class="form-control" id="start_date_slot" name="start_date_slot" required>
-            </div>
-            <div class="col-md-12">
-                <label>Autres patients</label>
-                <div id="other_patients_container">
-                </div>
-                <button type="button" class="btn btn-primary" id="add_patient_btn">Ajouter un autre patient</button>
-            </div>
-        </div>
-        <button class="btn btn-success btn-block" type="submit">Valider</button>
-    </form>
-</div>
-
 <div id="hearder_agenda">
     <h3>Mes consultations : </h3>
 </div>
