@@ -12,6 +12,7 @@ try {
     $error_message = '';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
         $errors = include('./patient_validator.php');
 
         if (count($errors) === 0) {

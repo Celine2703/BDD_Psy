@@ -7,40 +7,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbname = $_ENV['DB_NAME'];
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // Supposons que $errors est un tableau renvoyé par votre validateur
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
 
-        $date = $_POST['date'];
-        $start_time = $_POST['start_time'];
-        $end_time = $_POST['end_time'];
+        $errors = include('./slot_validator.php'); // Assurez-vous que ce fichier existe et renvoie bien un tableau
 
-        $start = new DateTime("$date $start_time");
-        $end = new DateTime("$date $end_time");
+        if (count($errors) == 0) {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Calcul et insertion des slots
-        while ($start < $end) {
-            $end_slot = clone $start;
-            $end_slot->modify('+30 minutes');
+            $date = $_POST['date'];
+            $start_time = $_POST['start_time'];
+            $end_time = $_POST['end_time'];
 
-            if ($end_slot > $end) {
-                break;
+            $start = new DateTime("$date $start_time");
+            $end = new DateTime("$date $end_time");
+
+            while ($start < $end) {
+                $end_slot = clone $start;
+                $end_slot->modify('+30 minutes');
+
+                if ($end_slot > $end) {
+                    break;
+                }
+
+                $start_datetime = $start->format('Y-m-d H:i:s');
+                $sql = "INSERT INTO slot (start_date_slot) VALUES (:start_datetime)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':start_datetime', $start_datetime);
+                $stmt->execute();
+
+                $start->modify('+30 minutes'); // Move to next slot
             }
 
-            $start_datetime = $start->format('Y-m-d H:i:s');
-            $sql = "INSERT INTO slot (start_date_slot) VALUES (:start_datetime)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':start_datetime', $start_datetime);
-            $stmt->execute();
-
-            $start->modify('+30 minutes'); // Move to next slot
+            echo "Slots ajoutés avec succès.";
+            header("Location: ./slot");
+            exit();
+        } else {
+            // Gérez l'affichage des erreurs ici
+            foreach ($errors as $error) {
+                echo "<p>Error: $error</p>";
+            }
         }
-
-        echo "Slots ajoutés avec succès.";
-        header("Location: ./slot");
-        exit();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
-        // Vous pouvez ajouter une gestion d'erreur plus avancée ici, comme logger l'erreur ou envoyer un email à l'administrateur
     }
 }
 ?>
