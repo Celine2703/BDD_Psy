@@ -56,6 +56,9 @@ $is_log =  !empty($_SESSION['user_role']);
                                     <li class="nav-item">
                                         <a class="nav-link" href="./agenda-user">Prendre un Rdv</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./my-consult">Mes Rdv</a>
+                                    </li>
                                 <?php endif; ?>
                             </ul>
                         </div>
