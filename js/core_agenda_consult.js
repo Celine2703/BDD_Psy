@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'timeGridDay,timeGridWeek'
         },
-        events: './src/agenda_slot.php',
+        events: './src/agenda_consult_all.php',
 
     });
 

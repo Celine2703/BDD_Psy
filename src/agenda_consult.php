@@ -24,7 +24,7 @@
 
 <?php include 'end.html'; ?>
 
-<script src="js/core_agenda.js"></script>
+<script src="js/core_agenda_consult.js"></script>
 
 </body>
 </html>
