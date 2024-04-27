@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteRule ^accueil$ src/index.php [NC,L]
+RewriteRule ^patient$ src/patient_list.php [NC,L]
+RewriteRule ^agenda$ src/agenda.php [NC,L]

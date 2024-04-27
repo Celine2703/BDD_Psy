@@ -1,8 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mico";
+
+include("loadEnv.php");
+
+$servername = $_ENV['DB_HOST'];
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
+$dbname = $_ENV['DB_NAME'];
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
