@@ -38,7 +38,12 @@
                     if (response.error) {
                         $('#loginError').text(response.error).removeClass('d-none');
                     } else {
-                        window.location.href = "patient"; // Rediriger si la connexion est réussie
+                        console.log(response['role']);
+                        if (response['role'] === "admin") {
+                            window.location.href = "patient";
+                        } else {
+                            window.location.href = "accueil";
+                        }
                     }
                 },
                 error: function () {

@@ -1,8 +1,10 @@
 <?php
 // Démarrage de la session
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    header("Location: ../accueil");
+    exit();
 }
+
 
 // Effacement de toutes les variables de session
 $_SESSION = array();

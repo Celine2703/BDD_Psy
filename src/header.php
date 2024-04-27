@@ -15,6 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
+$is_log =  !empty($_SESSION['user_role']);
 ?>
 
 <body class="sub_page">
@@ -52,7 +53,9 @@ $is_admin = isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin';
                                 <?php endif; ?>
                             </ul>
                         </div>
-                        <?php if (!$is_admin):?>
+                        <?php
+                        session_destroy();
+                        if (!$is_log):?>
                             <div class="quote_btn-container" id="connexion_btn_header">
                                 <a href="">
                                     <i class="fa fa-user" aria-hidden="true"></i>

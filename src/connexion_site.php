@@ -30,7 +30,7 @@ try {
             if (password_verify($password, $password_hash)) {
                 $_SESSION['user_role'] = $result['role'];
                 $_SESSION['user'] = $secu_number;
-                echo json_encode(['success' => true]);
+                echo json_encode(['success' => true, 'role' => $_SESSION['user_role']]);
             } else {
                 echo json_encode(['error' => 'Identifiants incorrects']);
             }
