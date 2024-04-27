@@ -2,8 +2,9 @@
 $(document).ready(function() {
 
     $('.delete.btn-line').click(function() {
-         let patientId = $(this).attr('data-id');
-        $('#deleteEmployeeModal .modal-footer .btn.btn-danger').attr('data-id', patientId);
+        let slotid = $(this).attr('data-id');
+        $('#deleteEmployeeModal .modal-footer .btn.btn-danger').attr('data-id', slotid);
+
     });
 
 
@@ -12,8 +13,7 @@ $(document).ready(function() {
 
         let patientid = $(this).attr('data-id');
 
-        $.post('./src/deletePatient.php', { patientId: patientid }, function(data) {
-            // alert(data);
+        $.post('./src/deleteSlot.php', { slotId: patientid }, function(data) {
             // location.reload();
         });
     });
@@ -28,5 +28,3 @@ $(document).ready(function() {
 
 
 });
-
-

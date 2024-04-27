@@ -4,11 +4,11 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Supprimer un patient</h4>
+                    <h4 class="modal-title">Supprimer une disponibilité</h4>
                     <span type="button" class="close" data-dismiss="modal" aria-hidden="true">×</span>
                 </div>
                 <div class="modal-body">
-                    <p>Etes-vous sur de vouloir supprimer un patient ?</p>
+                    <p>Etes-vous sur de vouloir supprimer cette disponibilité ?</p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">

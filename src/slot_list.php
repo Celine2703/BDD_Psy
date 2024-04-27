@@ -44,7 +44,7 @@
                     <th style="width: 120px;">Date</th>
                     <th>Heure de début</th>
                     <th>Heure de fin</th>
-                    <th>Disponible</th>
+                    <th>Statut</th>
                     <th class="actions"></th>
                 </tr>
                 </thead>
@@ -60,7 +60,8 @@
     </div>
 </div>
 
-<?php include 'end.html'; ?>
+<?php include './slot_delete.php';
+        include 'end.html'; ?>
 
 <?php include './include_js.html'; ?>
 </body>

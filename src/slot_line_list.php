@@ -14,7 +14,6 @@ if ($slots)
         echo "<td>" . $end_date_time->format('H:i') . "</td>"; // Affiche l'heure de fin
         echo "<td>Disponible</td>"; // Affiche la disponibilité, à adapter selon la logique métier
         echo "<td>";
-        echo '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> ';
         echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal" data-id="' . $start_date_time->format('Y-m-d H:i:s') . '"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
         echo "</td>";
         echo "</tr>";
