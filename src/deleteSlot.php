@@ -23,6 +23,8 @@ try {
     $stmt->execute();
 
     echo "Slot supprimé avec succès.";
+    header("Location: ./slot");
+    exit();
 }
 catch(PDOException $e) {
     echo "Erreur de connexion à la base de données : " . $e->getMessage();
