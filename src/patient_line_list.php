@@ -21,6 +21,6 @@ if ($patients)
 }
 else
 {
-    echo "<tr><td colspan='9'>Aucun patient trouvé.</td></tr>";
+    echo "<tr><td colspan='9' style='text-align: center;'>Aucun patient trouvé.</td></tr>";
 }
 ?>
