@@ -30,5 +30,11 @@
 <?php include 'end.html'; ?>
 
 <script src="js/core_agenda_user.js"></script>
+<style>
+    .fc-event-main-frame:hover {
+        background-color: #1e7e34;
+        cursor: pointer;
+    }
+</style>
 </body>
 </html>
