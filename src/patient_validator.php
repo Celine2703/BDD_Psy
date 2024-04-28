@@ -78,5 +78,5 @@ if (empty($_POST['date_naissance'])) {
     $errors['date_naissance'] = "Ce champ ne peut être vide.";
 }
 
-return $errors; // Retourner les erreurs pour traitement ultérieur
+return $errors;
 ?>

@@ -26,6 +26,9 @@ try {
         echo "<td>" . $start_date_time->format('H:i') . "</td>";
         echo "<td>" . $end_date_time->format('H:i') . "</td>";
         echo "<td>" . $slot['status'] . "</td>";
+        echo "<td>";
+        echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal" data-id="' . $start_date_time->format('Y-m-d H:i:s') . '"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
+        echo "</td>";
         echo "</tr>";
     }
 }
