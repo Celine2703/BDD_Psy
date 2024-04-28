@@ -46,7 +46,10 @@ $is_log =  !empty($_SESSION['user_role']);
                                         <a class="nav-link" href="./slot">Mes disponibilités</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="./agenda">Agenda - Disponibilités</a>
+                                        <a class="nav-link" href="./">Agenda - Disponibilités</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="./post-consult">POST - Consultation</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="./agenda-consultation">Agenda - Consultation</a>

@@ -13,14 +13,8 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (!isset($_SESSION['user'])) {
-        throw new Exception("Utilisateur non identifié.");
-    }
 
-    $securityNumber = $_SESSION['user'];
-
-    $stmt = $conn->prepare("SELECT * FROM to_consult WHERE security_number = :security_number");
-    $stmt->bindParam(':security_number', $securityNumber);
+    $stmt = $conn->prepare("SELECT * FROM to_consult");
     $stmt->execute();
 
     $consults = $stmt->fetchAll(PDO::FETCH_ASSOC);

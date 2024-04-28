@@ -33,7 +33,6 @@ CREATE TABLE `to_execute` (
 
 CREATE TABLE `to_consult` (
   `start_date_slot` DATETIME NOT NULL,
-  `start_date_consult` DATETIME,
   `arrival_date_consult` DATETIME,
   `price` DECIMAL(15,2),
   `payment_method` VARCHAR(50),
