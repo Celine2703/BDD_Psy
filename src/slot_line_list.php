@@ -22,7 +22,7 @@ try {
         $end_date_time->modify('+30 minutes'); // chaque slot dure 30 min
 
         echo "<tr>";
-        echo "<td>" . $start_date_time->format('d/m/Y') . "</td>";
+        echo "<td style='width: 120px;'>" . $start_date_time->format('d/m/Y') . "</td>";
         echo "<td>" . $start_date_time->format('H:i') . "</td>";
         echo "<td>" . $end_date_time->format('H:i') . "</td>";
         echo "<td>" . $slot['status'] . "</td>";

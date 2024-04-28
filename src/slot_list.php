@@ -21,47 +21,69 @@
 
 </head>
 
-<body>
 
+<body>
 <?php include 'header.php'; ?>
 
-<div class="container" style="">
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Gérer mes <b>disponibilités</b></h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="filters">
+                <h4 class="mt-5">Filtres</h4>
+                <form id="filters-form">
+                    <div class="form-group">
+                        <label for="date-from">Date de début:</label>
+                        <input type="date" class="form-control" id="date-from" name="date_from">
                     </div>
-                    <div class="col-sm-6">
-                        <a href="./slot-create" class="btn btn-success"><i class="material-icons"></i> <span>Ajouter</span></a>
+                    <div class="form-group">
+                        <label for="date-to">Date de fin:</label>
+                        <input type="date" class="form-control" id="date-to" name="date_to">
                     </div>
+                    <div class="form-group">
+                        <label for="status-filter">Statut:</label>
+                        <select class="form-control" id="status-filter" name="status">
+                            <option value="">Tous</option>
+                            <option value="Disponible">Disponible</option>
+                            <option value="Programmé">Programmé</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="applyFilters()">Appliquer</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="table-responsive">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-8"><h2>Gérer mes <b>disponibilités</b></h2></div>
+                            <div class="col-sm-4">
+                                <a href="./slot-create" class="btn btn-success"><i class="material-icons"></i> <span>Ajouter</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-hover table-slot">
+                        <thead>
+                        <tr>
+                            <th data-column="formatted_date" data-order="asc" class="sortable">Date</th>
+                            <th data-column="start_time" data-order="asc" class="sortable">Heure de début</th>
+                            <th data-column="end_time" data-order="asc" class="sortable">Heure de fin</th>
+                            <th data-column="status" data-order="asc" class="sortable">Statut</th>
+                            <th class="actions"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php include './slot_line_list.php'; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <table class="table table-striped table-hover table-slot">
-
-                <thead>
-                <tr>
-                    <th style="width: 120px;" data-column="formatted_date" data-order="asc" class="sortable">Date</th>
-                    <th data-column="start_time" data-order="asc" class="sortable">Heure de début</th>
-                    <th data-column="end_time" data-order="asc" class="sortable">Heure de fin</th>
-                    <th data-column="status" data-order="asc" class="sortable">Statut</th>
-                    <th class="actions"></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <?php include './slot_line_list.php'; ?>
-                </tbody>
-
-            </table>
         </div>
     </div>
 </div>
 
-<?php include './slot_delete.php';
-        include 'end.html'; ?>
-
+<?php include './slot_delete.php'; ?>
+<?php include 'end.html'; ?>
 <?php include './include_js.html'; ?>
 </body>
 
@@ -86,6 +108,20 @@
             });
         });
     });
+</script>
+<script>
+    function applyFilters() {
+        console.log("applyFilters");
+        var formData = $('#filters-form').serialize(); // Collect data from form
+        $.ajax({
+            url: './src/sortSlot.php', // Assuming you have a PHP file to handle the filter
+            type: 'GET',
+            data: formData,
+            success: function(data) {
+                $('tbody').html(data); // Update the table body
+            }
+        });
+    }
 </script>
 </html>
 
