@@ -4,8 +4,6 @@ $(document).ready(function() {
     $('.delete.btn-line').click(function() {
         let slotid = $(this).attr('data-id');
         $('#deleteEmployeeModal .modal-footer .btn.btn-danger').attr('data-id', slotid);
-
-        console.log(slotid);
     });
 
 

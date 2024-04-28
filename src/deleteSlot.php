@@ -1,5 +1,6 @@
 <?php
 include("loadEnv.php");
+loadEnv();
 
 $servername = $_ENV['DB_HOST'];
 $username = $_ENV['DB_USER'];
@@ -10,24 +11,38 @@ try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Supposons que l'identifiant du slot est envoyé sous le nom 'slotId'.
+    // Récupération de l'identifiant du slot depuis le POST
     $slotId = $_POST['slotId'];
 
-    // Vérifiez que l'ID du slot a été transmis et n'est pas vide
+    // Vérifier si l'ID du slot a été fourni
     if (empty($slotId)) {
         throw new Exception("L'ID du slot n'a pas été spécifié.");
     }
 
-    $stmt = $conn->prepare("DELETE FROM slot WHERE start_date_slot = :slotId");
-    $stmt->bindParam(':slotId', $slotId);
-    $stmt->execute();
+    // Début de la transaction
+    $conn->beginTransaction();
 
-    echo "Slot supprimé avec succès.";
+    // Suppression des consultations associées au slot
+    $stmtConsult = $conn->prepare("DELETE FROM to_consult WHERE start_date_slot = :slotId");
+    $stmtConsult->bindParam(':slotId', $slotId);
+    $stmtConsult->execute();
+
+    // Suppression du slot lui-même
+    $stmtSlot = $conn->prepare("DELETE FROM slot WHERE start_date_slot = :slotId");
+    $stmtSlot->bindParam(':slotId', $slotId);
+    $stmtSlot->execute();
+
+    // Valider la transaction
+    $conn->commit();
+
+    echo "Slot et consultations associées supprimées avec succès.";
     header("Location: ./slot");
     exit();
 }
 catch(PDOException $e) {
-    echo "Erreur de connexion à la base de données : " . $e->getMessage();
+    // Annuler la transaction en cas d'erreur
+    $conn->rollBack();
+    echo "Erreur de base de données : " . $e->getMessage();
 }
 catch(Exception $e) {
     echo "Erreur : " . $e->getMessage();
