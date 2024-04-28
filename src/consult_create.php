@@ -37,7 +37,6 @@ try {
             <div class="col-md-12 mb-3">
                 <label>Autres patients</label>
                 <div id="other_patients_container">
-                    <!-- Les champs pour les autres patients seront ajoutés ici dynamiquement -->
                 </div>
                 <button type="button" class="btn btn-primary mb-2" id="add_patient_btn">Ajouter un autre patient</button>
             </div>

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             $conn->commit();
-            header("Location: agenda-user");
+            header("Location: my-consult");
             exit();
         } else {
             $conn->rollBack();
