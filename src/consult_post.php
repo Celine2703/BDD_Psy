@@ -41,12 +41,12 @@ $_SESSION['form_data'] = [];
 
                 <thead>
                 <tr>
-                    <th style="width: 120px;">Date</th>
-                    <th>Heure de début</th>
-                    <th>Heure de fin</th>
-                    <th>Patient</th>
-                    <th>Status</th>
-                    <th class="actions"></th>
+                    <th data-column="start_date_slot" data-order="asc" class="sortable">Date</th>
+                    <th data-column="start_date_slot" data-order="asc" class="sortable">Heure de début</th>
+                    <th data-column="start_date_slot" data-order="asc" class="sortable">Heure de fin</th>
+                    <th data-column="security_number" data-order="asc" class="sortable">Patient</th>
+                    <th data-column="status" data-order="asc" class="sortable">Status</th>
+                    <th class="actions">Actions</th>
                 </tr>
                 </thead>
 
@@ -68,6 +68,34 @@ include 'end.html'; ?>
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function() {
+        $('.sortable').click(function() {
+            var column = $(this).data('column');
+            var order = $(this).data('order');
+            var newOrder = order === 'asc' ? 'desc' : 'asc';
+            $(this).data('order', newOrder);
+
+            $.ajax({
+                url: './src/sortConsult.php',
+                type: 'GET',
+                data: {
+                    column: column,
+                    order: newOrder
+                },
+                success: function(data) {
+                    $('tbody').html(data);
+                    // Update column headers to reflect new sort order
+                    $('.sortable').each(function() {
+                        $(this).data('order', 'asc'); // Reset all to 'asc'
+                    });
+                    $(this).data('order', newOrder); // Set clicked header to new order
+                }
+            });
+        });
+    });
+</script>
 
 <style>
     .table-slot th, .table-slot td {
