@@ -45,6 +45,18 @@ if (!empty($_POST['date']) && !empty($_POST['start_time']) && !empty($_POST['end
     if ($stmt->fetchColumn() > 0) {
         $errors['start_datetime'] = "Ce créneau est déjà réservé.";
     }
+
+    // Limite de 20 slots par jour
+    $sql = "SELECT COUNT(*) FROM slot WHERE DATE(start_date_slot) = :date";
+    $stmt = $conn->prepare($sql);
+    $dateMysql = $inputDate->format('Y-m-d');
+    $stmt->bindParam(':date', $dateMysql);
+    $stmt->execute();
+    $count = $stmt->fetchColumn();
+
+    if ($count + (($end_datetime->getTimestamp() - $start_datetime->getTimestamp()) / 1800) > 20) {
+        $errors['date'] = "Vous travaillez déjà plus de 10 heures pour cette date.";
+    }
 }
 
 ?>
