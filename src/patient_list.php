@@ -44,6 +44,16 @@
         </div>
         <div class="col-md-9">
             <div class="table-responsive">
+                <div class="search">
+                    <form id="search-form">
+                        <div class="d-flex">
+                            <div class="col-md-11">
+                                <input type="text" name="search" id="search-input" class="form-control" placeholder="Rechercher par nom, prenom, sécurité social, téléphone, email, ...">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="applySearch()"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+                </div>
                 <div class="table-wrapper">
                     <div class="table-title">
                         <div class="row" style="display: flex; align-items: center; justify-content: space-between;">
@@ -86,10 +96,25 @@
 
 
 <script>
+    // Définition des variables globales pour gérer l'état actuel du tri
+    var currentColumn = 'security_number'; // colonne de tri initiale
+    var currentOrder = 'asc'; // ordre de tri initial
 
     function applyFilters() {
         var formData = $('#filters-form').serialize();
+        // Inclure le tri courant et le terme de recherche dans la requête de filtrage
+        formData += '&column=' + currentColumn + '&order=' + currentOrder;
+        updateTableData(formData);
+    }
 
+
+    function applySearch() {
+        var searchValue = $('#search-input').val();
+        var formData = 'search=' + encodeURIComponent(searchValue) + '&column=' + currentColumn + '&order=' + currentOrder;
+        updateTableData(formData);
+    }
+
+    function updateTableData(formData) {
         $.ajax({
             url: './src/sortPatients.php',
             type: 'GET',
@@ -101,24 +126,17 @@
     }
 
     $(document).ready(function() {
-        $('.sortable').click(function() {
-            var column = $(this).data('column');
-            var order = $(this).data('order');
-            var newOrder = order === 'asc' ? 'desc' : 'asc';
-            $(this).data('order', newOrder);
 
-            $.ajax({
-                url: './src/sortPatients.php',
-                type: 'GET',
-                data: {
-                    column: column,
-                    order: newOrder
-                },
-                success: function(data) {
-                    $('tbody').html(data);
-                    $('.sortable[data-column="' + column + '"]').data('order', newOrder);
-                }
-            });
+        $('.sortable').click(function() {
+            currentColumn = $(this).data('column');
+            var order = $(this).data('order');
+            currentOrder = order === 'asc' ? 'desc' : 'asc';
+            $(this).data('order', currentOrder);
+
+            // Appliquer le tri en conservant les filtres actuels
+            var formData = $('#filters-form').serialize() + '&search=' + encodeURIComponent($('#search-input').val());
+            formData += '&column=' + currentColumn + '&order=' + currentOrder;
+            updateTableData(formData);
         });
     });
 </script>
