@@ -83,7 +83,7 @@ if (!$result) {
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="sex">Sexe</label>
-                    <input type="text" class="form-control" id="sex" value="<?php echo htmlspecialchars($result['sex']); ?>" readonly>
+                    <input type="text" class="form-control" id="sex" value="<?php echo htmlspecialchars($result['sex']) == "f" ? "féminin" : "masculin"; ?>" readonly>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="born_date">Date de naissance</label>
