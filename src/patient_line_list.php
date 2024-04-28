@@ -13,8 +13,8 @@ if ($patients)
         echo "<td>" . (!empty($patient['email']) ? htmlspecialchars($patient['email']) : '-') . "</td>";
         echo "<td>" . (!empty($patient['phone']) ? htmlspecialchars($patient['phone']) : '-') . "</td>";
         echo "<td>";
-        echo '<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>';
-        echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal" data-id="' . htmlspecialchars($patient['security_number']) . '"> <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
+        echo '<a href="./patient-show?id=' .   htmlspecialchars($patient['security_number']) . '"class="edit"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>';
+        echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal" data-toggle="tooltip" title="Supprimer" data-id="' . htmlspecialchars($patient['security_number']) . '"> <i class="material-icons" >&#xE872;</i></a>';
         echo "</td>";
         echo "</tr>";
     }

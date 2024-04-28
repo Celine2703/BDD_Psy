@@ -1,11 +1,13 @@
-CREATE TABLE `patient` (
-  `security_number` VARCHAR(20),
-  `firstname` VARCHAR(25),
-  `second_name` VARCHAR(25),
-  `lastname` VARCHAR(25),
-  `sex` VARCHAR(1),
-  `born_date` DATE,
-  `known_by` VARCHAR(50),
+CREATE TABLE IF NOT EXISTS `patient` (
+  `security_number` varchar(20) NOT NULL,
+  `firstname` varchar(25) DEFAULT NULL,
+  `second_name` varchar(25) DEFAULT NULL,
+  `lastname` varchar(25) DEFAULT NULL,
+  `sex` varchar(1) DEFAULT NULL,
+  `born_date` date DEFAULT NULL,
+  `known_by` varchar(50) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`security_number`)
 );
 
