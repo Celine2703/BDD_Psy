@@ -27,7 +27,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="filters">
                 <h4 class="mt-5">Filtres</h4>
                 <form id="filters-form">

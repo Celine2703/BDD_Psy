@@ -17,7 +17,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="filters">
                 <h4 class="mt-5">Filtres</h4>
                 <form id="filters-form">
@@ -86,6 +86,20 @@
 
 
 <script>
+
+    function applyFilters() {
+        var formData = $('#filters-form').serialize();
+
+        $.ajax({
+            url: './src/sortPatients.php',
+            type: 'GET',
+            data: formData,
+            success: function(data) {
+                $('tbody').html(data);
+            }
+        });
+    }
+
     $(document).ready(function() {
         $('.sortable').click(function() {
             var column = $(this).data('column');
