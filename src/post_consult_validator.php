@@ -34,10 +34,15 @@ if (!empty($_POST['anxiety_index']) && ($_POST['anxiety_index'] < 1 || $_POST['a
     $errors['anxiety_index'] = "L'indice d'anxiété doit être entre 1 et 10.";
 }
 
-if (!empty($_POST['arrival_date_consult']) && DateTime::createFromFormat('Y-m-d\TH:i', $_POST['arrival_date_consult']) === false) {
+if (!empty($_POST['arrival_date_consult']) && $arrivalDateTime = DateTime::createFromFormat('Y-m-d\TH:i', $_POST['arrival_date_consult']) === false) {
     $errors['arrival_date_consult'] = "Le format de la date d'arrivée n'est pas valide.";
 }
 
+$start_date_slot = DateTime::createFromFormat('Y-m-d\TH:i', $_POST['start_date_slot']);
+$start_date_slot_mysql = $start_date_slot ? $start_date_slot->format('Y-m-d H:i:s') : null;
+
+$arrival_date_consult = DateTime::createFromFormat('Y-m-d\TH:i', $_POST['arrival_date_consult']);
+$arrival_date_consult_mysql = $arrival_date_consult ? $arrival_date_consult->format('Y-m-d H:i:s') : null;
 
 if (count($errors) === 0) {
     try {
@@ -46,9 +51,13 @@ if (count($errors) === 0) {
 
         $stmt = $conn->prepare("UPDATE to_consult SET arrival_date_consult = :arrival_date_consult, price = :price, payment_method = :payment_method, anxiety_index = :anxiety_index, observations = :observations WHERE security_number = :security_number AND start_date_slot = :start_date_slot");
 
+
+        var_dump($start_date_slot_mysql);
+        var_dump($arrival_date_consult_mysql);
+        var_dump($_POST);
         $stmt->execute([
-            ':start_date_slot' => $_POST['start_date_slot'],
-            ':arrival_date_consult' => $_POST['arrival_date_consult'],
+            ':start_date_slot' => $start_date_slot_mysql,
+            ':arrival_date_consult' => $arrival_date_consult_mysql,
             ':price' => $_POST['price'],
             ':payment_method' => $_POST['payment_method'],
             ':anxiety_index' => $_POST['anxiety_index'],
@@ -58,7 +67,7 @@ if (count($errors) === 0) {
 
         $success = "Consultation ajoutée avec succès.";
         $_SESSION['success'] = $success;
-        header("Location: ../post-consult");
+//        header("Location: ../post-consult");
         exit();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
