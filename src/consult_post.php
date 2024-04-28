@@ -72,10 +72,10 @@ include 'end.html'; ?>
 <script>
     $(document).ready(function() {
         $('.sortable').click(function() {
-            var column = $(this).data('column');
-            var order = $(this).data('order');
+            var $this = $(this);
+            var column = $this.data('column');
+            var order = $this.data('order');
             var newOrder = order === 'asc' ? 'desc' : 'asc';
-            $(this).data('order', newOrder);
 
             $.ajax({
                 url: './src/sortConsult.php',
@@ -86,11 +86,9 @@ include 'end.html'; ?>
                 },
                 success: function(data) {
                     $('tbody').html(data);
-                    // Update column headers to reflect new sort order
-                    $('.sortable').each(function() {
-                        $(this).data('order', 'asc'); // Reset all to 'asc'
-                    });
-                    $(this).data('order', newOrder); // Set clicked header to new order
+                    // Reset all to 'asc' except the current clicked one
+                    $('.sortable').data('order', 'asc'); // Reset all to 'asc'
+                    $this.data('order', newOrder); // Set clicked header to new order
                 }
             });
         });
