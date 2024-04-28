@@ -18,14 +18,21 @@
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-6">
+				<div class="row" style="display: flex; align-items: center; justify-content: space-between;">
+					<div>
 						<h2>Gérer les <b>Patients</b></h2>
 					</div>
-					<div class="col-sm-6">
-						<a href="./patient-create" class="btn btn-success"><i class="material-icons"></i> <span>Ajouter</span></a>
+					<div style="padding:0px; display: flex; justify-content: space-between;>
+						<form action="search.php" method="GET" style="display: flex;">
+							<input type="text" name="query" placeholder="Rechercher..." style="padding: 5px;">
+							<button type="submit" style="padding: 5px;">Rechercher</button>
+						</form>
 					</div>
+				<div>
+					<a href="./patient-create" class="btn btn-success"><i class="material-icons"></i> <span>Ajouter</span></a>
 				</div>
+			</div>
+
 			</div>
 			<table class="table table-striped table-hover">
 
