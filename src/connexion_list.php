@@ -14,7 +14,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-    $stmt = $conn->prepare("SELECT * FROM to_consult");
+    $stmt = $conn->prepare("SELECT * FROM to_consult WHERE start_date_slot <= NOW()");
     $stmt->execute();
 
     $consults = $stmt->fetchAll(PDO::FETCH_ASSOC);

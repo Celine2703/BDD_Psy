@@ -108,3 +108,12 @@ include 'end.html'; ?>
         width: 0px;
     }
 </style>
+<style>
+    .table-slot th, .table-slot td {
+        text-align: center;
+    }
+    .sortable:hover {
+        cursor: pointer;
+        color: gray;
+    }
+</style>
