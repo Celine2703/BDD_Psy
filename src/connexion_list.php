@@ -1,5 +1,9 @@
+<!--Rayan Anki-->
+<!--Colombe Blachère-->
+<!--Céline Martin-Parisot-->
+<!--L3-APP LSI2-->
 <?php
-session_start(); // Assurez-vous de démarrer la session avant d'accéder à $_SESSION
+session_start();
 
 include_once("loadEnv.php");
 loadEnv();

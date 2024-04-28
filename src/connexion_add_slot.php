@@ -1,3 +1,7 @@
+<!--Rayan Anki-->
+<!--Colombe Blachère-->
+<!--Céline Martin-Parisot-->
+<!--L3-APP LSI2-->
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include("loadEnv.php");

@@ -1,3 +1,7 @@
+<!--Rayan Anki-->
+<!--Colombe Blachère-->
+<!--Céline Martin-Parisot-->
+<!--L3-APP LSI2-->
 <?php
 // Démarrage de la session
 if (session_status() === PHP_SESSION_NONE) {

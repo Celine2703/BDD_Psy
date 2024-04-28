@@ -1,3 +1,7 @@
+<!--Rayan Anki-->
+<!--Colombe Blachère-->
+<!--Céline Martin-Parisot-->
+<!--L3-APP LSI2-->
 <?php
 if ($consults) {
     foreach ($consults as $consult) {

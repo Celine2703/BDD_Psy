@@ -1,3 +1,7 @@
+<!--Rayan Anki-->
+<!--Colombe Blachère-->
+<!--Céline Martin-Parisot-->
+<!--L3-APP LSI2-->
 <!-- Delete Modal HTML -->
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">

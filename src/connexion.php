@@ -1,3 +1,7 @@
+<!--Rayan Anki-->
+<!--Colombe Blachère-->
+<!--Céline Martin-Parisot-->
+<!--L3-APP LSI2-->
 <div class="modal form connexion" id="modal_form_connexion">
     <div class="wrapper">
         <div class="inner">
