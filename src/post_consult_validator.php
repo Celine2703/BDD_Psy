@@ -34,16 +34,17 @@ if (!empty($_POST['anxiety_index']) && ($_POST['anxiety_index'] < 1 || $_POST['a
     $errors['anxiety_index'] = "L'indice d'anxiété doit être entre 1 et 10.";
 }
 
-if (!empty($_POST['arrival_date_consult']) && DateTime::createFromFormat('Y-m-d H:i:s', $_POST['arrival_date_consult']) === false) {
+if (!empty($_POST['arrival_date_consult']) && DateTime::createFromFormat('Y-m-d\TH:i', $_POST['arrival_date_consult']) === false) {
     $errors['arrival_date_consult'] = "Le format de la date d'arrivée n'est pas valide.";
 }
+
 
 if (count($errors) === 0) {
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("INSERT INTO to_consult (start_date_slot, arrival_date_consult, price, payment_method, anxiety_index, observations, security_number) VALUES (:start_date_slot, :arrival_date_consult, :price, :payment_method, :anxiety_index, :observations, :security_number)");
+        $stmt = $conn->prepare("UPDATE to_consult SET arrival_date_consult = :arrival_date_consult, price = :price, payment_method = :payment_method, anxiety_index = :anxiety_index, observations = :observations WHERE security_number = :security_number AND start_date_slot = :start_date_slot");
 
         $stmt->execute([
             ':start_date_slot' => $_POST['start_date_slot'],
@@ -57,7 +58,7 @@ if (count($errors) === 0) {
 
         $success = "Consultation ajoutée avec succès.";
         $_SESSION['success'] = $success;
-        header("Location: ./post-consult");
+        header("Location: ../post-consult");
         exit();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();

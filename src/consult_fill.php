@@ -27,7 +27,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="arrival_date_consult">Heure d'arrivée</label>
-                <input type="datetime-local" class="form-control" id="arrival_date_consult" name="arrival_date_consult">
+                <input type="datetime-local" class="form-control" id="arrival_date_consult" name="arrival_date_consult" value="<?php echo htmlspecialchars($formData['start_date_slot'] ?? $_POST['start_date_slot'] ?? ''); ?>"  >
                 <?php if (isset($errors['arrival_date_consult'])): ?>
                     <div class="alert alert-danger"><?php echo $errors['arrival_date_consult']; ?></div>
                 <?php endif; ?>
@@ -67,7 +67,7 @@
 
             <div class="col-md-6 mb-3">
                 <label for="security_number">Numéro de Sécurité Sociale</label>
-                <input type="text" class="form-control" id="security_number" name="security_number" required value="<?php echo htmlspecialchars($formData['security_number'] ?? $_POST['start_date_slot'] ?? ''); ?>" readonly>
+                <input type="text" class="form-control" id="security_number" name="security_number" required value="<?php echo htmlspecialchars($formData['security_number'] ?? $_POST['security_number'] ?? ''); ?>" readonly>
                 <?php if (isset($errors['security_number'])): ?>
                     <div class="alert alert-danger"><?php echo $errors['security_number']; ?></div>
                 <?php endif; ?>
