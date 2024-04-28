@@ -22,7 +22,10 @@
 
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'header.php';
+$_SESSION['errors'] = [];
+$_SESSION['form_data'] = [];
+?>
 
 <div class="container" style="">
     <div class="table-responsive">
