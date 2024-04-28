@@ -15,6 +15,7 @@ $(document).ready(function() {
         let patientid = $(this).attr('data-id');
 
         $.post('./src/deleteSlot.php', { slotId: patientid }, function(data) {
+            alert(data);
             location.reload();
         });
     });

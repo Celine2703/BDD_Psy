@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 
 
-    $(".modal-footer .btn.btn-danger").click(function() {
+    $(".modal-footer .consult.btn.btn-danger").click(function() {
 
         let patientid = $(this).attr('data-id');
 
