@@ -30,13 +30,12 @@ try {
         $events[] = [
             'start' => $start->format('c'),  // Format ISO8601 pour la compatibilité avec FullCalendar
             'end' => $end->format('c'),
-            'title' => 'Patient :' .  $slot['security_number']
+            'title' => 'Patient :' . $slot['security_number']
         ];
     }
 
     echo json_encode($events);  // Envoyer les données au format JSON pour FullCalendar
-}
-catch(PDOException $e) {
+} catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }
 
