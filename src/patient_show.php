@@ -63,6 +63,10 @@ if (!$result) {
 
     ?>
 
+    <div class="">
+        <class class="col-9" style=""></class>
+        <a href="invite-user?id=<?php echo $result['security_number']; ?>"  id="inviteUserBtn" class="btn btn-primary" style="margin-top: 10px; margin-left: 80%;">Inviter un utilisateur</a>
+    </div>
     <div class="container mt-5 mb-5">
         <h4 class="mb-3">Éditer les informations du patient</h4>
         <form method="post" id="edit_patient_form" class="needs-validation" action="update-patient" novalidate>
