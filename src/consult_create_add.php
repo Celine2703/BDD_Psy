@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare("INSERT INTO to_consult (start_date_slot, security_number) VALUES (?, ?)");
             $stmt->execute([$start_date_slot, $security_number_main]);
 
-            foreach ($_POST['patient_security_numbers'] as $sec_num) {
+            foreach ($_POST['patient_security_number'] as $sec_num) {
                 $stmt->execute([$start_date_slot, $sec_num]);
             }
 
