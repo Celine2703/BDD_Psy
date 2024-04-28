@@ -27,14 +27,14 @@ try {
 
     foreach ($patients as $patient) {
         echo "<tr>";
-        echo "<td>" . htmlspecialchars($patient['security_number']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['firstname']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['second_name']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['lastname']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['sex']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['born_date']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['email']) . "</td>";
-        echo "<td>" . htmlspecialchars($patient['phone']) . "</td>";
+        echo "<td data-id='" . truncate($patient['security_number']) . "'>" . truncate(htmlspecialchars($patient['security_number'])) . "</td>";
+        echo "<td>" . truncate(htmlspecialchars($patient['firstname'])) . "</td>";
+        echo "<td>" . truncate(htmlspecialchars($patient['second_name'])) . "</td>";
+        echo "<td>" . truncate(htmlspecialchars($patient['lastname'])) . "</td>";
+        echo "<td>" . truncate(htmlspecialchars($patient['sex'])) . "</td>";
+        echo "<td>" . truncate(htmlspecialchars($patient['born_date'])) . "</td>";
+        echo "<td>" . truncate(htmlspecialchars($patient['email']) ). "</td>";
+        echo "<td>" .  truncate(htmlspecialchars($patient['phone'])) . "</td>";
         echo "<td>";
         echo '<a href="./patient-show?id=' .   truncate($patient['security_number']) . '" class="edit"><i class="material-icons" data-toggle="tooltip" title="Modifier">&#xE254;</i></a>';
         echo '<a href="#deleteEmployeeModal" class="delete btn-line" data-toggle="modal" data-toggle="tooltip" title="Supprimer" data-id="' . truncate($patient['security_number']) . '"> <i class="material-icons" >&#xE872;</i></a>';
