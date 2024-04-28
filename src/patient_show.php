@@ -146,7 +146,7 @@ if (!$result) {
                     <div id="future_consultations_container">
                         <?php if (count($future_consultations) > 0): ?>
                             <?php foreach ($future_consultations as $consultation): ?>
-                                <div class="consultation-line"><?php echo htmlspecialchars($consultation['start_date_slot']); ?></div>
+                                <input type="text" class="form-control mb-2" value="<?php echo htmlspecialchars($consultation['start_date_slot']); ?>" disabled>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Aucune consultation future trouvée.</p>
@@ -160,7 +160,7 @@ if (!$result) {
                     <div id="past_consultations_container">
                         <?php if (count($past_consultations) > 0): ?>
                             <?php foreach ($past_consultations as $consultation): ?>
-                                <div class="consultation-line"><?php echo htmlspecialchars($consultation['start_date_slot']); ?></div>
+                                <input type="text" class="form-control mb-2" value="<?php echo htmlspecialchars($consultation['start_date_slot']); ?>" disabled>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Aucune consultation passée trouvée.</p>
@@ -208,5 +208,21 @@ if (!$result) {
         });
     });
 </script>
+
+<style>
+    label {
+        font-weight: bold;
+    }
+
+    .row.job-line {
+        margin-top: 5px;
+    }
+
+    #add_job_btn {
+        margin-top: 10px;
+    }
+
+</style>
 </body>
 </html>
+
