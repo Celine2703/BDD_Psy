@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         $stmtUser->execute([$_GET['id'], $passwordHash]);
 
         if (mail($email, "Invitation à vous connecter", "Votre identifiant : " . $_GET['id'] . "\nVotre mot de passe : " . $password, 'From: your-email@example.com')) {
-            $message = "Invitation envoyée avec succès.";
+            $message = "Utilisateur créer avec succès.";
         } else {
             $message = "Erreur lors de l'envoi de l'email.";
         }
@@ -46,13 +46,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
 
 <div class="container mt-5 mb-5">
     <h4 class="mb-3">Inviter un utilisateur</h4>
-    <p><?php echo $message; ?></p>
-    <?php if (empty($message)): ?>
-        <form method="post" action="inviteUser.php">
-            <input type="hidden" name="id" value="<?php echo htmlspecialchars($_GET['id']); ?>">
-            <button type="submit" class="btn btn-primary">Envoyer Invitation</button>
-        </form>
+    <?php if (!empty($message)): ?>
+        <div class="alert alert-info"><?php echo $message; ?></div>
     <?php endif; ?>
+    <form method="post" action="inviteUser.php">
+        <div class="form-group">
+            <label for="id">Numéro de sécurité:</label>
+            <input type="text" class="form-control" id="id" name="id" value="<?php echo htmlspecialchars($_GET['id']); ?>" disabled>
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe généré:</label>
+            <input type="text" class="form-control" id="password" name="password" value="<?php echo $password; ?>" disabled>
+        </div>
+    </form>
 </div>
 
 <?php include './end.html'; ?>
