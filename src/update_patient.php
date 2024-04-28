@@ -13,36 +13,40 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 try {
     $conn->beginTransaction();
 
-    // Mise à jour des informations modifiables du patient
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['security_number'])) {
         $security_number = $_POST['security_number'];
         $known_by = $_POST['known_by'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
 
+        // Mise à jour des infos du patient
         $stmt = $conn->prepare("UPDATE patient SET known_by = ?, email = ?, phone = ? WHERE security_number = ?");
         $stmt->execute([$known_by, $email, $phone, $security_number]);
 
-        // Traitement des jobs ajoutés
+        // Gestion des jobs
         if (isset($_POST['job_names']) && isset($_POST['job_start_dates'])) {
             $job_names = $_POST['job_names'];
             $job_start_dates = $_POST['job_start_dates'];
 
             for ($i = 0; $i < count($job_names); $i++) {
-                $stmt = $conn->prepare("INSERT INTO to_execute (security_number, name, start_date) VALUES (?, ?, ?)");
-                $stmt->execute([$security_number, $job_names[$i], $job_start_dates[$i]]);
-            }
-        }
+                // Vérifiez d'abord si le job existe déjà dans la table `job`
+                $job_check_stmt = $conn->prepare("SELECT COUNT(*) FROM job WHERE name = ?");
+                $job_check_stmt->execute([$job_names[$i]]);
+                $job_exists = $job_check_stmt->fetchColumn() > 0;
 
-        if (isset($_POST['consultations_to_delete'])) {
-            foreach ($_POST['consultations_to_delete'] as $consultation_id) {
-                $stmt = $conn->prepare("DELETE FROM to_consult WHERE id = ?");
-                $stmt->execute([$consultation_id]);
+                // Si le job n'existe pas, créez-le
+                if (!$job_exists) {
+                    $job_insert_stmt = $conn->prepare("INSERT INTO job (name) VALUES (?)");
+                    $job_insert_stmt->execute([$job_names[$i]]);
+                }
+
+                // Insérer dans to_execute
+                $execute_insert_stmt = $conn->prepare("INSERT INTO to_execute (security_number, name, start_date) VALUES (?, ?, ?)");
+                $execute_insert_stmt->execute([$security_number, $job_names[$i], $job_start_dates[$i]]);
             }
         }
 
         $conn->commit();
-        echo "Informations mises à jour avec succès.";
         header("Location: ./patient");
         exit();
     }
