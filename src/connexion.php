@@ -42,7 +42,7 @@
                         if (response['role'] === "admin") {
                             window.location.href = "patient";
                         } else {
-                            window.location.href = "accueil";
+                            window.location.href = "my-consult";
                         }
                     }
                 },
