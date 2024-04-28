@@ -24,7 +24,6 @@ if ($consults) {
         echo "<td>" . ($isComplete ? 'Terminé' : 'En attente') . "</td>";
         echo "<td class='text-center'>";
         echo '<div class="btn-group" role="group" aria-label="Basic example">';
-        echo '<a href="#deleteEmployeeModal" class="btn consult delete" data-toggle="modal" data-id="' . $start_date_time->format('Y-m-d H:i:s') . '"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
         echo '<form action="consult-fill" method="post" style="display: inline-block;">';
         echo '<input type="hidden" name="start_date_slot" value="' . $start_date_time->format('Y-m-d H:i:s') . '">';
         echo '<input type="hidden" name="security_number" value="' . htmlspecialchars($consult['security_number']) . '">';
