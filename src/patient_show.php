@@ -61,11 +61,24 @@ if (!$result) {
         }
     }
 
+    $connUser = new PDO("mysql:host=" . $_ENV['DB_C_HOST'] . ";dbname=" . $_ENV['DB_C_NAME'], $_ENV['DB_C_USER'], $_ENV['DB_C_PASS']);
+    $connUser->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $checkUser = $connUser->prepare("SELECT security_number FROM users WHERE security_number = ?");
+    $checkUser->execute([$security_number]);
+    $userExists = $checkUser->fetch();
+
+    if (count($userExists) != 0) {
+        $inviteUserLabel = "Mot de passe oublié ?";
+    } else {
+        $inviteUserLabel = "Inviter";
+
+    }
+
     ?>
 
     <div class="">
         <class class="col-9" style=""></class>
-        <a href="invite-user?id=<?php echo $result['security_number']; ?>"  id="inviteUserBtn" class="btn btn-primary" style="margin-top: 10px; margin-left: 80%;">Inviter un utilisateur</a>
+        <a href="invite-user?id=<?php echo $result['security_number']; ?>"  id="inviteUserBtn" class="btn btn-primary" style="margin-top: 10px; margin-left: 80%;"><?= $inviteUserLabel?></a>
     </div>
     <div class="container mt-5 mb-5">
         <h4 class="mb-3">Éditer les informations du patient</h4>

@@ -36,13 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
             $message = "Utilisateur créé avec succès.";
         }
 
-        // Envoi d'email
-        $headers = 'From: your-email@example.com';
-        if (mail($email, "Invitation à vous connecter", "Votre identifiant : " . $_GET['id'] . "\nVotre mot de passe : " . $password, $headers)) {
-            $message .= " Email envoyé avec succès.";
-        } else {
-            $message .= " Erreur lors de l'envoi de l'email.";
-        }
     }
 }
 ?>
