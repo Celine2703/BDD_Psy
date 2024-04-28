@@ -38,8 +38,8 @@ if (!$result) {
     echo "<p>Patient non trouvé.</p>";
 } else {
 
-    // Chargement des jobs liés au patient
-    $jobs_stmt = $conn->prepare("SELECT name FROM to_execute WHERE security_number = :security_number");
+    // Chargement des jobs liés au patient avec dates
+    $jobs_stmt = $conn->prepare("SELECT j.name, te.start_date FROM to_execute te JOIN job j ON te.name = j.name WHERE te.security_number = :security_number");
     $jobs_stmt->bindParam(':security_number', $security_number);
     $jobs_stmt->execute();
     $jobs = $jobs_stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -105,9 +105,16 @@ if (!$result) {
                 <div class="col-md-12 mb-3">
                     <label>Jobs liés au patient</label>
                     <div id="jobs_container">
-                        <?php if (count($jobs) > 0): ?>
+                        <?php if (!empty($jobs)): ?>
                             <?php foreach ($jobs as $job): ?>
-                                <div class="job-line"><?php echo htmlspecialchars($job['name']); ?></div>
+                                <div class="row job-line">
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($job['name']); ?>" readonly>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="date" class="form-control" value="<?php echo htmlspecialchars((new DateTime($job['start_date']))->format('Y-m-d')); ?>" readonly>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <p>Aucun job trouvé.</p>

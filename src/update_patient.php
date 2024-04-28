@@ -29,6 +29,10 @@ try {
             $job_start_dates = $_POST['job_start_dates'];
 
             for ($i = 0; $i < count($job_names); $i++) {
+
+                if (empty($job_names[$i]) || empty($job_start_dates[$i])) {
+                    continue ;
+                }
                 // Vérifiez d'abord si le job existe déjà dans la table `job`
                 $job_check_stmt = $conn->prepare("SELECT COUNT(*) FROM job WHERE name = ?");
                 $job_check_stmt->execute([$job_names[$i]]);
