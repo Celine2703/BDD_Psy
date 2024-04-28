@@ -3,6 +3,7 @@ include_once("loadEnv.php");
 loadEnv();
 
 $message = "";
+$password = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $connData = new PDO("mysql:host=" . $_ENV['DB_HOST'] . ";dbname=" . $_ENV['DB_NAME'], $_ENV['DB_USER'], $_ENV['DB_PASS']);
     $connData->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -18,16 +19,29 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         $connUser = new PDO("mysql:host=" . $_ENV['DB_C_HOST'] . ";dbname=" . $_ENV['DB_C_NAME'], $_ENV['DB_C_USER'], $_ENV['DB_C_PASS']);
         $connUser->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // Générer un mot de passe aléatoire
         $password = bin2hex(random_bytes(4)); // 8 characters long
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        $stmtUser = $connUser->prepare("INSERT INTO users (security_number, password, role) VALUES (?, ?, 'user')");
-        $stmtUser->execute([$_GET['id'], $passwordHash]);
-
-        if (mail($email, "Invitation à vous connecter", "Votre identifiant : " . $_GET['id'] . "\nVotre mot de passe : " . $password, 'From: your-email@example.com')) {
-            $message = "Utilisateur créer avec succès.";
+        // Vérifie si l'utilisateur existe déjà et met à jour ou crée un nouveau utilisateur
+        $stmtCheckUser = $connUser->prepare("SELECT security_number FROM users WHERE security_number = ?");
+        $stmtCheckUser->execute([$_GET['id']]);
+        if ($stmtCheckUser->fetch()) {
+            $stmtUpdateUser = $connUser->prepare("UPDATE users SET password = ?, role = 'user' WHERE security_number = ?");
+            $stmtUpdateUser->execute([$passwordHash, $_GET['id']]);
+            $message = "Mot de passe de l'utilisateur mis à jour avec succès.";
         } else {
-            $message = "Erreur lors de l'envoi de l'email.";
+            $stmtUser = $connUser->prepare("INSERT INTO users (security_number, password, role) VALUES (?, ?, 'user')");
+            $stmtUser->execute([$_GET['id'], $passwordHash]);
+            $message = "Utilisateur créé avec succès.";
+        }
+
+        // Envoi d'email
+        $headers = 'From: your-email@example.com';
+        if (mail($email, "Invitation à vous connecter", "Votre identifiant : " . $_GET['id'] . "\nVotre mot de passe : " . $password, $headers)) {
+            $message .= " Email envoyé avec succès.";
+        } else {
+            $message .= " Erreur lors de l'envoi de l'email.";
         }
     }
 }
