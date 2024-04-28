@@ -38,7 +38,7 @@
       //avis section
       include 'avis.html';
       //contact section
-      include 'contact.html';
+//      include 'contact.html';
       //end section
       include 'end.html';
 
