@@ -65,7 +65,7 @@ if (!$result) {
 
     <div class="container mt-5 mb-5">
         <h4 class="mb-3">Éditer les informations du patient</h4>
-        <form method="post" id="edit_patient_form" class="needs-validation" action="update_patient.php" novalidate>
+        <form method="post" id="edit_patient_form" class="needs-validation" action="update-patient" novalidate>
             <input type="hidden" name="security_number" value="<?php echo $result['security_number']; ?>">
 
             <div class="row">
@@ -168,7 +168,7 @@ if (!$result) {
                     <input type="date" class="form-control" name="job_start_dates[]" placeholder="Date de début" required>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-danger remove_job_btn">Supprimer</button>
+                    <button type="button" class="btn btn-danger remove_job_btn">X</button>
                 </div>
             </div>
         `);
