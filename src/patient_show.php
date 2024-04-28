@@ -74,12 +74,32 @@ if (!$result) {
 
     }
 
+    // Calcul de l'âge à partir de la date de naissance
+    $dateOfBirth = new DateTime($result['born_date']);
+    $today = new DateTime();
+    $age = $today->diff($dateOfBirth)->y;
+
+
+// Détermination de la catégorie d'âge
+    if ($age < 3) {
+        $category = "Bébé";
+    } elseif ($age < 12) {
+        $category = "Enfant";
+    } elseif ($age < 18) {
+        $category = "Adolescent";
+    } else {
+        $category = $result['sex'] == "f" ? "Femme" : "Homme";
+    }
+
     ?>
 
-    <div class="">
-        <class class="col-9" style=""></class>
-        <a href="invite-user?id=<?php echo $result['security_number']; ?>"  id="inviteUserBtn" class="btn btn-primary" style="margin-top: 10px; margin-left: 80%;"><?= $inviteUserLabel?></a>
-    </div>
+        <?php if ($age >= 18) :?>
+            <div class="">
+                <class class="col-9" style=""></class>
+                <a href="invite-user?id=<?php echo $result['security_number']; ?>"  id="inviteUserBtn" class="btn btn-primary" style="margin-top: 10px; margin-left: 80%;"><?= $inviteUserLabel?></a>
+            </div>
+        <?php endif?>
+
     <div class="container mt-5 mb-5">
         <h4 class="mb-3">Éditer les informations du patient</h4>
         <form method="post" id="edit_patient_form" class="needs-validation" action="update-patient" novalidate>
@@ -105,6 +125,10 @@ if (!$result) {
                 <div class="col-md-6 mb-3">
                     <label for="born_date">Date de naissance</label>
                     <input type="date" class="form-control" id="born_date" value="<?php echo htmlspecialchars($result['born_date']); ?>" readonly>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="age">Âge</label>
+                    <input type="text" class="form-control" id="age" value="<?php echo $age . ' ans - ' . $category; ?>" disabled>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="known_by">Connu par</label>
