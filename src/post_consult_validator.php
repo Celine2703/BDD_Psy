@@ -63,7 +63,7 @@ if (count($errors) === 0) {
 
         $success = "Consultation ajoutée avec succès.";
         $_SESSION['success'] = $success;
-//        header("Location: ../post-consult");
+        header("Location: ../post-consult");
         exit();
     } catch (PDOException $e) {
         echo "Erreur : " . $e->getMessage();
