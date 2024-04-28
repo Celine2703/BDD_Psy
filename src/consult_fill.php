@@ -23,8 +23,8 @@ $password = $_ENV['DB_PASS'];
 $dbname = $_ENV['DB_NAME'];
 
 // Vérifie si les identifiants de la consultation sont passés
-$security_number = $_SESSION['security_number'] ?? '';
-$start_date_slot = $formData['start_date_slot'] ?? '';
+$security_number = $_POST['security_number'] ?? '';
+$start_date_slot = $_POST['start_date_slot'] ?? '';
 
 $errors = $_SESSION['errors'] ?? [];
 
@@ -38,7 +38,6 @@ if ($security_number && $start_date_slot) {
         $stmt->bindParam(':start_date_slot', $start_date_slot);
         $stmt->execute();
 
-        // Récupère les données de la consultation si elle existe
         $formData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     } catch (PDOException $e) {
@@ -46,9 +45,9 @@ if ($security_number && $start_date_slot) {
     }
 }
 
-// Nettoyage de la session
 $_SESSION['errors'] = [];
 $_SESSION['form_data'] = '';
+
 
 ?>
 
