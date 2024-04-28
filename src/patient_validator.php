@@ -37,6 +37,7 @@ if (isset($_POST['email'])) {
     }
 }
 
+
 // Validation de la date de naissance
 if (isset($_POST['date_naissance'])) {
     $date_naissance = $_POST['date_naissance'];
@@ -51,6 +52,30 @@ if (isset($_POST['phone'])) {
     if (!preg_match('/^\d+$/', $phone)) {
         $errors['phone'] = "Le numéro de téléphone doit contenir uniquement des chiffres.";
     }
+}
+
+if (empty($_POST['lastname'])) {
+    $errors['lastname'] = "Ce champ ne peut être vide.";
+}
+
+// Validation pour le prénom
+if (empty($_POST['firstname'])) {
+    $errors['firstname'] = "Ce champ ne peut être vide.";
+}
+
+// Validation pour le sexe
+if (empty($_POST['sexe'])) {
+    $errors['sexe'] = "Ce champ ne peut être vide.";
+}
+
+// Validation pour l'adresse
+if (empty($_POST['adresse'])) {
+    $errors['adresse'] = "Ce champ ne peut être vide.";
+}
+
+// Validation pour la date de naissance
+if (empty($_POST['date_naissance'])) {
+    $errors['date_naissance'] = "Ce champ ne peut être vide.";
 }
 
 return $errors; // Retourner les erreurs pour traitement ultérieur

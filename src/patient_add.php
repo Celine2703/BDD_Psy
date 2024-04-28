@@ -20,17 +20,20 @@
             <div class="col-md-6 mb-3">
                 <label for="lastname">Nom</label>
                 <input type="text" class="form-control" id="lastname" name="lastname" required value="<?php echo htmlspecialchars($_POST['lastname'] ?? ''); ?>">
-                <!-- Aucun message d'erreur spécifique pour le nom car non mentionné dans la demande -->
+                <?php if (!empty($errors['lastname'])): ?>
+                    <div class="alert alert-danger mt-2"><?php echo $errors['lastname']; ?></div>
+                <?php endif; ?>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="firstname">Prénom</label>
                 <input type="text" class="form-control" id="firstname" name="firstname" required value="<?php echo htmlspecialchars($_POST['firstname'] ?? ''); ?>">
-                <!-- Aucun message d'erreur spécifique pour le prénom car non mentionné dans la demande -->
+                <?php if (!empty($errors['firstname'])): ?>
+                    <div class="alert alert-danger mt-2"><?php echo $errors['firstname']; ?></div>
+                <?php endif; ?>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="second_name">Deuxième Prénom</label>
                 <input type="text" class="form-control" id="second_name" name="second_name" required value="<?php echo htmlspecialchars($_POST['second_name'] ?? ''); ?>">
-                <!-- Aucun message d'erreur spécifique pour le deuxième prénom car non mentionné dans la demande -->
             </div>
             <div class="col-md-6 mb-3">
                 <label for="sexe">Sexe</label>
@@ -38,7 +41,9 @@
                     <option value="f" <?php echo (isset($_POST['sexe']) && $_POST['sexe'] == 'feminin') ? 'selected' : ''; ?>>Féminin</option>
                     <option value="m" <?php echo (isset($_POST['sexe']) && $_POST['sexe'] == 'masculin') ? 'selected' : ''; ?>>Masculin</option>
                 </select>
-                <!-- Aucun message d'erreur spécifique pour le sexe car non mentionné dans la demande -->
+                <?php if (!empty($errors['sexe'])): ?>
+                    <div class="alert alert-danger mt-2"><?php echo $errors['sexe']; ?></div>
+                <?php endif; ?>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="security_number">Numéro de Sécurité Social</label>
@@ -57,7 +62,9 @@
             <div class="col-md-6 mb-3">
                 <label for="adresse">Adresse</label>
                 <textarea class="form-control" id="adresse" name="adresse" required><?php echo htmlspecialchars($_POST['adresse'] ?? ''); ?></textarea>
-                <!-- Aucun message d'erreur spécifique pour l'adresse car non mentionné dans la demande -->
+                <?php if (!empty($errors['adresse'])): ?>
+                    <div class="alert alert-danger mt-2"><?php echo $errors['adresse']; ?></div>
+                <?php endif; ?>
             </div>
             <div class="col-md-6 mb-3">
                 <label for="phone">Téléphone</label>
