@@ -29,9 +29,9 @@ try {
         echo "<tr>";
         echo "<td data-id='" . truncate($patient['security_number']) . "'>" . truncate(htmlspecialchars($patient['security_number'])) . "</td>";
         echo "<td>" . truncate(htmlspecialchars($patient['firstname'])) . "</td>";
-        echo "<td>" . truncate(htmlspecialchars($patient['second_name'])) . "</td>";
+        echo "<td>" . (!empty($patient['second_name']) ? truncate($patient['second_name']) : '-') . "</td>";
         echo "<td>" . truncate(htmlspecialchars($patient['lastname'])) . "</td>";
-        echo "<td>" . truncate(htmlspecialchars($patient['sex'])) . "</td>";
+        echo "<td>" . (!empty($patient['sex']) ? htmlspecialchars($patient['sex'] == 'f' ? "Féminin" : "Masculin") : '-') . "</td>";
         echo "<td>" . truncate(htmlspecialchars($patient['born_date'])) . "</td>";
         echo "<td>" . truncate(htmlspecialchars($patient['email']) ). "</td>";
         echo "<td>" .  truncate(htmlspecialchars($patient['phone'])) . "</td>";
