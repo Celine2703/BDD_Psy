@@ -42,18 +42,16 @@
 
                 <thead>
                 <tr>
-                    <th style="width: 120px;">Date</th>
-                    <th>Heure de début</th>
-                    <th>Heure de fin</th>
-                    <th>Statut</th>
+                    <th style="width: 120px;" data-column="formatted_date" data-order="asc" class="sortable">Date</th>
+                    <th data-column="start_time" data-order="asc" class="sortable">Heure de début</th>
+                    <th data-column="end_time" data-order="asc" class="sortable">Heure de fin</th>
+                    <th data-column="status" data-order="asc" class="sortable">Statut</th>
                     <th class="actions"></th>
                 </tr>
                 </thead>
 
                 <tbody>
-                <!-- pour chaque patient dans la liste des patients on affiche les informations du patient dans une ligne du tableau  -->
                 <?php include './slot_line_list.php'; ?>
-                <!-- end affiche -->
                 </tbody>
 
             </table>
@@ -67,10 +65,36 @@
 <?php include './include_js.html'; ?>
 </body>
 
+<script>
+    $(document).ready(function() {
+        $('.sortable').click(function() {
+            var column = $(this).data('column');
+            var order = $(this).data('order');
+            var newOrder = order === 'asc' ? 'desc' : 'asc';
+            $(this).data('order', newOrder);
+
+            $.ajax({
+                url: './src/sortSlot.php',
+                type: 'GET',
+                data: {
+                    column: column,
+                    order: newOrder
+                },
+                success: function(data) {
+                    $('tbody').html(data);
+                }
+            });
+        });
+    });
+</script>
 </html>
 
 <style>
     .table-slot th, .table-slot td {
         text-align: center;
+    }
+    .sortable:hover {
+        cursor: pointer;
+        color: gray;
     }
 </style>
