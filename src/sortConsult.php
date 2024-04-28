@@ -15,12 +15,13 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $query = "SELECT *, 
-              (CASE 
-                WHEN arrival_date_consult IS NOT NULL AND price IS NOT NULL AND payment_method IS NOT NULL AND anxiety_index IS NOT NULL AND observations IS NOT NULL THEN 'Complet' 
-                ELSE 'À compléter' 
-              END) AS status 
-              FROM to_consult 
-              ORDER BY $column $order";
+          (CASE 
+            WHEN arrival_date_consult IS NOT NULL AND price IS NOT NULL AND payment_method IS NOT NULL AND anxiety_index IS NOT NULL AND observations IS NOT NULL THEN 'Complet' 
+            ELSE 'À compléter' 
+          END) AS status 
+          FROM to_consult 
+          WHERE start_date_slot <= NOW()
+          ORDER BY $column $order";
 
     $stmt = $conn->prepare($query);
     $stmt->execute();
