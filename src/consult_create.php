@@ -21,10 +21,12 @@ try {
 } catch (Exception $e) {
     $formattedDate = '';
 }
+$errors = $_SESSION['errors'] ?? '';
+
 ?>
 
 <div class="container mt-5 mb-5">
-    <h4 class="mb-3">Planifier une tâche</h4>
+    <h4 class="mb-3">Planifier une consultation</h4>
     <form method="post" id="add_task_form" class="needs-validation" action="consult-add" novalidate>
         <div class="row">
             <div class="col-md-6 mb-3">
