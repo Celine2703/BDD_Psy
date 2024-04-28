@@ -48,6 +48,33 @@ try {
                 $stmt->execute();
 
                 echo "Patient ajouté avec succès.";
+
+                if (isset($_POST['job_names']) && isset($_POST['job_start_dates'])) {
+                    $job_names = $_POST['job_names'];
+                    $job_start_dates = $_POST['job_start_dates'];
+
+                    for ($i = 0; $i < count($job_names); $i++) {
+                        if (empty($job_names[$i]) || empty($job_start_dates[$i])) {
+                            continue; // Skip any empty input
+                        }
+
+                        // Check if the job already exists
+                        $checkJob = $conn->prepare("SELECT COUNT(*) FROM job WHERE name = ?");
+                        $checkJob->execute([$job_names[$i]]);
+                        $jobExists = $checkJob->fetchColumn();
+
+                        // If the job does not exist, insert it into job table
+                        if ($jobExists == 0) {
+                            $insertJob = $conn->prepare("INSERT INTO job (name) VALUES (?)");
+                            $insertJob->execute([$job_names[$i]]);
+                        }
+
+                        // Insert into to_execute table
+                        $insertExecute = $conn->prepare("INSERT INTO to_execute (security_number, name, start_date) VALUES (?, ?, ?)");
+                        $insertExecute->execute([$_POST['security_number'], $job_names[$i], $job_start_dates[$i]]);
+                    }
+                }
+
                 header("Location: ./patient");
                 exit();
             }

@@ -67,7 +67,7 @@ if (!$result) {
     $checkUser->execute([$security_number]);
     $userExists = $checkUser->fetch();
 
-    if (count($userExists) != 0) {
+    if ($userExists) {
         $inviteUserLabel = "Mot de passe oublié ?";
     } else {
         $inviteUserLabel = "Inviter";

@@ -73,6 +73,14 @@
                     <div class="alert alert-danger mt-2"><?php echo $errors['date_naissance']; ?></div>
                 <?php endif; ?>
             </div>
+            <!-- Section for adding jobs -->
+            <div class="col-md-12 mb-3">
+                <label>Jobs</label>
+                <div id="jobs_container">
+                    <!-- Jobs will be added here dynamically -->
+                </div>
+                <button type="button" class="btn btn-primary mb-2" id="add_job_btn">Ajouter un job</button>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-9"></div>
@@ -87,5 +95,28 @@
 
 <?php include './end.html'; ?>
 <?php include './include_js.html'; ?>
+<script>
+    $(document).ready(function() {
+        $('#add_job_btn').click(function() {
+            $('#jobs_container').append(`
+            <div class="row mt-2 job-line">
+                <div class="col-md-5">
+                    <input type="text" class="form-control" name="job_names[]" placeholder="Nom du job" required>
+                </div>
+                <div class="col-md-5">
+                    <input type="date" class="form-control" name="job_start_dates[]" placeholder="Date de début" required>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger remove_job_btn">X</button>
+                </div>
+            </div>
+        `);
+        });
+
+        $(document).on('click', '.remove_job_btn', function() {
+            $(this).closest('.row').remove();
+        });
+    });
+</script>
 </body>
 </html>
