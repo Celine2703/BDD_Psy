@@ -50,7 +50,7 @@ if (count($errors) === 0) {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $conn->prepare("UPDATE to_consult SET arrival_date_consult = :arrival_date_consult, price = :price, payment_method = :payment_method, anxiety_index = :anxiety_index, observations = :observations WHERE security_number = :security_number AND start_date_slot = :start_date_slot");
-        
+
         $stmt->execute([
             ':start_date_slot' => $start_date_slot_mysql,
             ':arrival_date_consult' => $arrival_date_consult_mysql,

@@ -45,6 +45,7 @@ $_SESSION['form_data'] = [];
                     <th>Heure de début</th>
                     <th>Heure de fin</th>
                     <th>Patient</th>
+                    <th>Status</th>
                     <th class="actions"></th>
                 </tr>
                 </thead>
