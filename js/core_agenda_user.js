@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             timeGridWeek: 'Semaine',
             timeGridDay: 'Jour'
         },
-        editable: true,
+        editable: false,
         hiddenDays: [0],
         firstDay: 1,
         expandRows: true,
