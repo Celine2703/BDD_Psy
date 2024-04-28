@@ -35,8 +35,8 @@
             <div class="col-md-6 mb-3">
                 <label for="sexe">Sexe</label>
                 <select id="sexe" class="form-control" name="sexe" required>
-                    <option value="feminin" <?php echo (isset($_POST['sexe']) && $_POST['sexe'] == 'feminin') ? 'selected' : ''; ?>>Féminin</option>
-                    <option value="masculin" <?php echo (isset($_POST['sexe']) && $_POST['sexe'] == 'masculin') ? 'selected' : ''; ?>>Masculin</option>
+                    <option value="f" <?php echo (isset($_POST['sexe']) && $_POST['sexe'] == 'feminin') ? 'selected' : ''; ?>>Féminin</option>
+                    <option value="m" <?php echo (isset($_POST['sexe']) && $_POST['sexe'] == 'masculin') ? 'selected' : ''; ?>>Masculin</option>
                 </select>
                 <!-- Aucun message d'erreur spécifique pour le sexe car non mentionné dans la demande -->
             </div>
