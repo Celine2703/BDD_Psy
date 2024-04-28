@@ -44,7 +44,7 @@
                         <select class="form-control" id="status-filter" name="status">
                             <option value="">Tous</option>
                             <option value="Disponible">Disponible</option>
-                            <option value="Programmé">Programmé</option>
+                            <option value="Réservé">Réservé</option>
                         </select>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="applyFilters()">Appliquer</button>

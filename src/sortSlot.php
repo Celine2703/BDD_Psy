@@ -24,7 +24,7 @@ try {
         $whereClauses[] = "DATE(start_date_slot) BETWEEN '$date_from' AND '$date_to'";
     }
     if (!empty($status_filter)) {
-        if ($status_filter === 'Programmé') {
+        if ($status_filter === 'Réservé') {
             $whereClauses[] = "EXISTS (SELECT * FROM to_consult WHERE start_date_slot = slot.start_date_slot)";
         } elseif ($status_filter === 'Disponible') {
             $whereClauses[] = "NOT EXISTS (SELECT * FROM to_consult WHERE start_date_slot = slot.start_date_slot)";
@@ -39,7 +39,7 @@ try {
               TIME_FORMAT(start_date_slot, '%H:%i') AS start_time,
               TIME_FORMAT(ADDTIME(start_date_slot, '00:30:00'), '%H:%i') AS end_time,
               (CASE 
-                WHEN EXISTS (SELECT * FROM to_consult WHERE start_date_slot = slot.start_date_slot) THEN 'Programmé'
+                WHEN EXISTS (SELECT * FROM to_consult WHERE start_date_slot = slot.start_date_slot) THEN 'Réservé'
                 ELSE 'Disponible'
               END) AS status
               FROM slot
