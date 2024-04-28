@@ -49,12 +49,13 @@ try {
 
                 echo "Patient ajouté avec succès.";
 
-                if (isset($_POST['job_names']) && isset($_POST['job_start_dates'])) {
+                if (isset($_POST['job_names']) && isset($_POST['job_start_dates']) && isset($_POST['job_end_dates'])) {
                     $job_names = $_POST['job_names'];
                     $job_start_dates = $_POST['job_start_dates'];
+                    $job_end_dates = $_POST['job_end_dates'];
 
                     for ($i = 0; $i < count($job_names); $i++) {
-                        if (empty($job_names[$i]) || empty($job_start_dates[$i])) {
+                        if (empty($job_names[$i]) || empty($job_start_dates[$i]) || empty($job_end_dates[$i])) {
                             continue; // Skip any empty input
                         }
 
@@ -70,8 +71,8 @@ try {
                         }
 
                         // Insert into to_execute table
-                        $insertExecute = $conn->prepare("INSERT INTO to_execute (security_number, name, start_date) VALUES (?, ?, ?)");
-                        $insertExecute->execute([$_POST['security_number'], $job_names[$i], $job_start_dates[$i]]);
+                        $insertExecute = $conn->prepare("INSERT INTO to_execute (security_number, name, start_date, end_date) VALUES (?, ?, ?, ?)");
+                        $insertExecute->execute([$_POST['security_number'], $job_names[$i], $job_start_dates[$i], $job_end_dates[$i]]);
                     }
                 }
 

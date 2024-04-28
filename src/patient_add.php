@@ -108,12 +108,19 @@
             $('#jobs_container').append(`
             <div class="row mt-2 job-line">
                 <div class="col-md-5">
+                    <label for="">Nom du job</label>
                     <input type="text" class="form-control" name="job_names[]" placeholder="Nom du job" required>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-2">
+                    <label for="">Date de Début</label>
                     <input type="date" class="form-control" name="job_start_dates[]" placeholder="Date de début" required>
                 </div>
                 <div class="col-md-2">
+                    <label for="">Date de Fin</label>
+                    <input type="date" class="form-control" name="job_end_dates[]" placeholder="Date de Fin" required>
+                </div>
+                <div class="col-md-2">
+                    <label for=""> </label>
                     <button type="button" class="btn btn-danger remove_job_btn">X</button>
                 </div>
             </div>
@@ -125,5 +132,21 @@
         });
     });
 </script>
+
+<style>
+    label {
+        font-weight: bold;
+    }
+
+    .row.job-line {
+        margin-top: 5px;
+    }
+
+    #add_job_btn {
+        margin-top: 10px;
+    }
+
+</style>
+
 </body>
 </html>

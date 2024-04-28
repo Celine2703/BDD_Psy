@@ -39,7 +39,7 @@ if (!$result) {
 } else {
 
     // Chargement des jobs liés au patient avec dates
-    $jobs_stmt = $conn->prepare("SELECT j.name, te.start_date FROM to_execute te JOIN job j ON te.name = j.name WHERE te.security_number = :security_number");
+    $jobs_stmt = $conn->prepare("SELECT j.name, te.start_date, te.end_date FROM to_execute te JOIN job j ON te.name = j.name WHERE te.security_number = :security_number");
     $jobs_stmt->bindParam(':security_number', $security_number);
     $jobs_stmt->execute();
     $jobs = $jobs_stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -126,10 +126,16 @@ if (!$result) {
                             <?php foreach ($jobs as $job): ?>
                                 <div class="row job-line">
                                     <div class="col-md-5">
+                                        <label for="">Nom du job</label>
                                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($job['name']); ?>" readonly>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-2">
+                                        <label for="">Date de Début</label>
                                         <input type="date" class="form-control" value="<?php echo htmlspecialchars((new DateTime($job['start_date']))->format('Y-m-d')); ?>" readonly>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">Date de Fin</label>
+                                        <input type="date" class="form-control" placeholder="Date de Fin"   value="<?php echo htmlspecialchars((new DateTime($job['end_date']))->format('Y-m-d')); ?>" readonly>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -186,12 +192,19 @@ if (!$result) {
             $('#jobs_container').append(`
             <div class="row mt-2 job-line">
                 <div class="col-md-5">
+                    <label for="">Nom du job</label>
                     <input type="text" class="form-control" name="job_names[]" placeholder="Nom du job" required>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-2">
+                    <label for="">Date de Début</label>
                     <input type="date" class="form-control" name="job_start_dates[]" placeholder="Date de début" required>
                 </div>
                 <div class="col-md-2">
+                    <label for="">Date de Fin</label>
+                    <input type="date" class="form-control" name="job_end_dates[]" placeholder="Date de Fin" required>
+                </div>
+                <div class="col-md-2">
+                    <label> </label>
                     <button type="button" class="btn btn-danger remove_job_btn">X</button>
                 </div>
             </div>

@@ -25,6 +25,7 @@ CREATE TABLE `to_execute` (
   `security_number` VARCHAR(20),
   `name` VARCHAR(50),
   `start_date` DATETIME,
+  `end_date` DATETIME,
   PRIMARY KEY (`security_number`, `name`),
   FOREIGN KEY (`security_number`) REFERENCES `patient`(`security_number`),
   FOREIGN KEY (`name`) REFERENCES `job`(`name`)
