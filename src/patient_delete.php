@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Annuler">
-                    <input type="submit" class="btn btn-danger" value="Valider">
+                    <input type="submit" class="patient btn btn-danger" value="Valider">
                 </div>
             </form>
         </div>

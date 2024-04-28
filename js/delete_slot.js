@@ -5,15 +5,25 @@ $(document).ready(function() {
         let slotid = $(this).attr('data-id');
         $('#deleteEmployeeModal .modal-footer .btn.btn-danger').attr('data-id', slotid);
 
+        console.log("slotid ", slotid);
     });
 
 
 
-    $(".modal-footer .btn.btn-danger").click(function() {
+    $(".modal-footer .slot.btn.btn-danger").click(function() {
 
         let patientid = $(this).attr('data-id');
 
         $.post('./src/deleteSlot.php', { slotId: patientid }, function(data) {
+            location.reload();
+        });
+    });
+
+    $(".modal-footer .patient.btn.btn-danger").click(function() {
+
+        let patientid = $(this).attr('data-id');
+
+        $.post('./src/deletePatient.php', { patientId: patientid }, function(data) {
             location.reload();
         });
     });

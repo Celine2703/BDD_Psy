@@ -12,6 +12,7 @@ try
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $patientId = $_POST['patientId'];
+    var_dump($patientId);
 
     $stmt = $conn->prepare("DELETE FROM patient WHERE security_number = :patientId");
     $stmt->bindParam(':patientId', $patientId);
