@@ -91,6 +91,12 @@ if (!$result) {
         $category = $result['sex'] == "f" ? "Femme" : "Homme";
     }
 
+    $firstConsultStmt = $conn->prepare("SELECT start_date_slot FROM to_consult WHERE security_number = :security_number ORDER BY start_date_slot ASC LIMIT 1");
+    $firstConsultStmt->bindParam(':security_number', $security_number);
+    $firstConsultStmt->execute();
+    $firstConsultation = $firstConsultStmt->fetch(PDO::FETCH_ASSOC);
+    $firstConsultationDate = $firstConsultation ? (new DateTime($firstConsultation['start_date_slot']))->format('d/m/Y H:i') : "Pas de consultations enregistrées";
+
     ?>
 
         <?php if ($age >= 18) :?>
@@ -141,6 +147,10 @@ if (!$result) {
                 <div class="col-md-6 mb-3">
                     <label for="phone">Téléphone</label>
                     <input type="text" class="form-control" id="phone" name="phone" value="<?php echo htmlspecialchars($result['phone']); ?>">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="first_consultation_date">Première Consultation</label>
+                    <input type="text" class="form-control" id="first_consultation_date" value="<?php echo $firstConsultationDate; ?>" disabled>
                 </div>
                 <!-- Jobs liés au patient -->
                 <div class="col-md-12 mb-3">
