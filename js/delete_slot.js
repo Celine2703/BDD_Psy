@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     $(".modal-footer .patient.btn.btn-danger").click(function() {
 
+
         let patientid = $(this).attr('data-id');
 
         $.post('./src/deletePatient.php', { patientId: patientid }, function(data) {
