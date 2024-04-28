@@ -1,3 +1,7 @@
+// Rayan Anki
+// Colombe Blachère
+// Céline Martin-Parisot
+// L3-APP LSI2
 $(document).ready(function()
 {
     $('#connexion_btn_header').click(function(e) 

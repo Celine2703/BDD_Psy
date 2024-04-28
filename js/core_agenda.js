@@ -1,3 +1,8 @@
+// Rayan Anki
+// Colombe Blachère
+// Céline Martin-Parisot
+// L3-APP LSI2
+
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
